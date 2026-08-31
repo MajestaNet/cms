@@ -36,17 +36,29 @@ html {
   color-scheme: light;
 }
 
-/* Lockup in the navy header: keep it readable and above 180px when the bar allows. */
-.site-title img,
-.site-title svg {
-  height: 1.35rem;
-  width: auto;
-  min-width: 180px;
-  max-height: 2rem;
+:root {
+  --sl-nav-height: 4.75rem;
 }
 
+/* Lockup in the navy header: keep it ≥180px wide (BRAND.md). Stroke artwork needs height. */
 .header {
   border-bottom: 1px solid rgba(246, 207, 85, 0.35);
+  background-color: var(--mn-navy) !important;
+}
+
+.title-wrapper {
+  min-width: 180px;
+  overflow: visible;
+}
+
+.site-title img,
+.site-title svg {
+  height: 2.55rem;
+  width: auto;
+  min-width: 180px;
+  max-width: none;
+  max-height: 3rem;
+  filter: none !important;
 }
 
 .cms-unpublished {

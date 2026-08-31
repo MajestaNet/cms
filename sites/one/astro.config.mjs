@@ -66,7 +66,8 @@ export default defineConfig({
       description:
         'Dedicated-install API platform. Connect with MCP, the one CLI, and family HTTP.',
       logo: {
-        src: '../../brand/logo-gold.svg',
+        light: '../../brand/logo-gold.svg',
+        dark: '../../brand/logo-gold.svg',
         alt: 'Majesta.Net',
         replacesTitle: true,
       },
@@ -85,6 +86,7 @@ export default defineConfig({
       components: {
         ThemeSelect: './src/components/ThemeSelect.astro',
         Banner: './src/components/Banner.astro',
+        Head: './src/components/Head.astro',
       },
       head: unpublished
         ? [{ tag: 'meta', attrs: { name: 'robots', content: 'noindex' } }]
