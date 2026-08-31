@@ -206,6 +206,13 @@ h3 {
   }
 
   .mn-product {
-    letter-spacing: 0.12em;
+    /* Keep the lockup; do not clip “ONE” to a single letter next to the menu. */
+    display: none;
+  }
+
+  .site-title img,
+  .site-title svg {
+    min-width: 0;
+    width: min(180px, 42vw);
   }
 }
