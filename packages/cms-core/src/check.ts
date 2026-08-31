@@ -2,6 +2,7 @@ import { join } from 'node:path';
 import { readCatalog } from './catalog.ts';
 import { readContentMap, checkContentMap } from './content-map.ts';
 import { checkOverlayPages, formatOverlayIssues } from './overlay.ts';
+import { checkCatalogNetlify } from './netlify.ts';
 import { resolveSource, isProductionPublish, type ResolvedSource } from './source.ts';
 
 export interface SiteCheck {
@@ -13,6 +14,7 @@ export interface SiteCheck {
 
 export async function checkAllSites(repoRoot: string): Promise<SiteCheck[]> {
   const catalog = readCatalog(join(repoRoot, 'sites/catalog.yaml'));
+  checkCatalogNetlify(repoRoot, catalog);
   const results: SiteCheck[] = [];
   for (const site of catalog.sites) {
     const siteDir = join(repoRoot, site.directory);

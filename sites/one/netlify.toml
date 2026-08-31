@@ -1,4 +1,7 @@
-# Paths are relative to the base directory (repo root if base is unset).
+# Operator setup: ../../NETLIFY.md
+# Package directory in the Netlify UI: sites/one. Leave base directory unset
+# (repo root) so npm ci sees workspaces, brand/, and packages/cms-core.
+# Paths below are relative to that base. ignore must not list sites/two.
 [build]
   command = "npm ci && npm test && npm run docs-check && npm run build --workspace=@majestanet/one-docs"
   publish = "sites/one/dist"

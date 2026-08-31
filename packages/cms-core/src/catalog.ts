@@ -54,11 +54,25 @@ export function parseCatalog(text: string): Catalog {
   });
   const ids = new Set<string>();
   const repos = new Set<string>();
+  const directories = new Set<string>();
+  const hostnames = new Set<string>();
+  const netlifySites = new Set<string>();
   for (const s of sites) {
+    if (s.id === '_template' || s.directory === 'sites/_template') {
+      throw new Error('catalog must not register sites/_template');
+    }
     if (ids.has(s.id)) throw new Error(`duplicate catalog id ${s.id}`);
     if (repos.has(s.source_repo)) throw new Error(`duplicate source_repo ${s.source_repo}`);
+    if (directories.has(s.directory)) throw new Error(`duplicate catalog directory ${s.directory}`);
+    if (hostnames.has(s.hostname)) throw new Error(`duplicate catalog hostname ${s.hostname}`);
+    if (netlifySites.has(s.netlify_site)) {
+      throw new Error(`duplicate catalog netlify_site ${s.netlify_site}`);
+    }
     ids.add(s.id);
     repos.add(s.source_repo);
+    directories.add(s.directory);
+    hostnames.add(s.hostname);
+    netlifySites.add(s.netlify_site);
   }
   return { sites };
 }

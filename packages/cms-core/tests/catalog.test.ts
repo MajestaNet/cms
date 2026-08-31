@@ -40,4 +40,31 @@ describe('catalog', () => {
 `;
     expect(() => parseCatalog(dup)).toThrow(/duplicate catalog id/);
   });
+
+  it('rejects duplicate hostname and netlify_site (second product is a new site)', () => {
+    const two = `
+  - id: two
+    source_repo: MajestaNet/two
+    directory: sites/two
+    hostname: two.majesta.net
+    netlify_site: majesta-two-docs
+    agent: sites/two/AGENT.md
+    production_pin: main
+    pin_file: sites/two/pin
+`;
+    expect(() => parseCatalog(sample + two)).not.toThrow();
+    expect(() =>
+      parseCatalog(sample + two.replace('two.majesta.net', 'one.majesta.net')),
+    ).toThrow(/duplicate catalog hostname/);
+    expect(() =>
+      parseCatalog(sample + two.replace('majesta-two-docs', 'majesta-one-docs')),
+    ).toThrow(/duplicate catalog netlify_site/);
+  });
+
+  it('rejects registering the template directory', () => {
+    const bad = sample
+      .replace('id: one', 'id: _template')
+      .replace('directory: sites/one', 'directory: sites/_template');
+    expect(() => parseCatalog(bad)).toThrow(/_template/);
+  });
 });

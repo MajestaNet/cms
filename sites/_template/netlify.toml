@@ -1,0 +1,26 @@
+# Copy to sites/<id>/netlify.toml when that site’s Starlight package exists.
+# Replace every <id> and the npm workspace name. Then create a *new* Netlify
+# site (package directory sites/<id>, base directory unset). See NETLIFY.md.
+#
+# Paths are relative to the base directory (repo root if base is unset).
+# Isolation: list this site’s tree and shared inputs only. Never list
+# another product’s sites/<other>/ or fixtures/<other>/.
+
+[build]
+  command = "npm ci && npm test && npm run docs-check && npm run build --workspace=@majestanet/<id>-docs"
+  publish = "sites/<id>/dist"
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- sites/<id> brand packages/cms-core fixtures/<id> package.json package-lock.json"
+
+[build.environment]
+  NODE_VERSION = "22"
+  ASTRO_TELEMETRY_DISABLED = "1"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
