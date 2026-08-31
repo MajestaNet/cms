@@ -45,7 +45,7 @@ The machine-readable registry is [`sites/catalog.yaml`](./sites/catalog.yaml). A
 | [QUALITY.md](./QUALITY.md) | Overlay template, chrome, links — how agents add pages |
 | [AGENT.md](./AGENT.md) | Global writer fence; routes to the site playbook |
 | [BRAND.md](./BRAND.md) | Majesta identity inherited from `webpage` |
-| [NETLIFY.md](./NETLIFY.md) | One repo → many sites → many subdomains |
+| [NETLIFY.md](./NETLIFY.md) | Operator runbook: One repo → many Netlify sites → many subdomains |
 | [SOURCE-CONTRACT.md](./SOURCE-CONTRACT.md) | Notify payload the source repo sends here |
 | [sites/README.md](./sites/README.md) | Per-site layout and how to add a product |
 

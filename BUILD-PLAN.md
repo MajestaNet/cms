@@ -40,7 +40,7 @@ Source-repo notify workflows (`MajestaNet/one` first) are implemented **in those
 
 ### Phase 4 — Domains + production
 
-1. One Netlify site per product; CNAME each subdomain ([NETLIFY.md](./NETLIFY.md)).
+1. One Netlify site per product; CNAME each subdomain. Operator steps (GitHub app, package directory, fail-closed pin, adding Two later): [NETLIFY.md](./NETLIFY.md).
 2. Production auto-publish from **CMS** `main` **after** a reviewed overlay merge. That is not the same as publishing from a **source** `main`.
 3. For One: production pin is `v*`; assemble `/v/X.Y/` in `sites/one` dist; keep last N minors (default 2 unless a later PR says 3).
 4. Release notes on the product repo may link `https://one.majesta.net/v/X.Y/`. Do not attach a site tarball to the product GitHub Release.

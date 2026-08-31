@@ -55,3 +55,9 @@ export {
   type CmsRemarkOptions,
 } from './remark-cms-sources.ts';
 export { checkAllSites, type SiteCheck } from './check.ts';
+export {
+  parseIgnorePaths,
+  requiredIgnorePaths,
+  checkSiteNetlifyToml,
+  checkCatalogNetlify,
+} from './netlify.ts';

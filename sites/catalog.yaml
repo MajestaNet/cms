@@ -2,6 +2,11 @@
 # The router agent (AGENT.md) maps notify.source → a row here.
 # A folder under sites/ is a Netlify site only if it appears in this file.
 # sites/_template is not a site.
+#
+# netlify_site is the Netlify UI name for that host. id, source_repo,
+# directory, hostname, and netlify_site must each be unique. Adding Two
+# (or any later product) is a new row + a new Netlify site — not a domain
+# alias on majesta-one-docs. See NETLIFY.md.
 
 sites:
   - id: one

@@ -14,6 +14,7 @@ One directory per **Netlify site** / public hostname, registered in [catalog.yam
 | `AGENT.md` | Writer playbook for **this** product only |
 | `content-map.yaml` | Allowlisted source paths → public pages |
 | `pin` | Production source revision (`unset` until first publish) |
+| `netlify.toml` | Per-site build, publish dir, and `ignore` (after Starlight exists) |
 
 Phase 2 (One): Starlight app files and `netlify.toml` live in `sites/one/`. Overlay pages are `src/content/docs/`. Mapped source markdown is included at build time from the pin (or `fixtures/<id>/` while unset). Do not commit a second wiki.
 
@@ -22,6 +23,8 @@ Phase 2 (One): Starlight app files and `netlify.toml` live in `sites/one/`. Over
 1. Copy [`_template/`](./_template/) to `sites/<id>/`.
 2. Write that product’s `AGENT.md` from scratch. Do not paste One’s playbook. One is an API-first dedicated install; Two is a private local inference control plane; a future site will differ again.
 3. Fill `content-map.yaml` and `README.md`. Add overlay pages from [`_template/overlay-page.md`](./_template/overlay-page.md). Leave `pin` as `unset` until the pin rule is satisfied.
-4. Add a row to [catalog.yaml](./catalog.yaml).
-5. Add `.cursor/agents/cms-<id>.md` that points at the new `AGENT.md`.
-6. Create a **new** Netlify site pointed at that package directory ([NETLIFY.md](../NETLIFY.md)). Do not hang a second product off domain aliases on an existing site.
+4. Copy [`_template/netlify.toml`](./_template/netlify.toml), replace `<id>` and the workspace name, and keep that site’s `ignore` list from mentioning another product’s tree.
+5. Add `"sites/<id>"` to the root `package.json` `workspaces` array and refresh the lockfile.
+6. Add a row to [catalog.yaml](./catalog.yaml) with a **new** `hostname` and `netlify_site`.
+7. Add `.cursor/agents/cms-<id>.md` that points at the new `AGENT.md`.
+8. Create a **new** Netlify site pointed at that package directory ([NETLIFY.md](../NETLIFY.md)). Do not hang a second product off domain aliases on an existing site.
