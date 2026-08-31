@@ -1,6 +1,6 @@
 # Site: Majesta One (`one.majesta.net`)
 
-Customer-facing docs for the Majesta One install (API-first, no embedded UI). Source markdown lives in the public [`MajestaNet/one`](https://github.com/MajestaNet/one) repo. This directory is overlay + pin + (later) Starlight.
+Customer-facing docs for the Majesta One install (API-first, no embedded UI). Source markdown lives in the public [`MajestaNet/one`](https://github.com/MajestaNet/one) repo. This directory is overlay + pin + Starlight (`@majestanet/one-docs`). Netlify: [netlify.toml](./netlify.toml). Overlay pages: `src/content/docs/`. Mapped source markdown is included at **build time** from the pin (or `fixtures/one/` while pin is unset).
 
 **Pin rule:** production follows the latest **`v*` tag**, same version string as `ghcr.io/majestanet/one-api`. A notify on `MajestaNet/one` `main` updates overlay in a draft PR only.
 

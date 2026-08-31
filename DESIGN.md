@@ -60,7 +60,7 @@ If the agent copies full markdown into this repo, two corpora drift. Prefer:
 | **Source markdown** | The product repo at that pin (fetched at **build time**) | Product contributors / feature agents |
 | **Overlay** | `sites/<id>/` — sidebar, customer-tone wrappers, IA | That site’s CMS agent |
 
-The Starlight build **includes** allowlisted files from the pinned checkout. It does not commit those files as the source of truth.
+Off-allowlist links in included markdown are **rewritten to GitHub** at the pin (`blob/<tag|sha>/…`, or `HEAD` for fixtures). Mapped relative links become public page paths. The build does not fail on a playbook URL; it refuses to serve that URL on the subdomain.
 
 **Per-product version rule** (do not flatten):
 

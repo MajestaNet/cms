@@ -8,3 +8,6 @@ dist/
 .DS_Store
 .vite/
 coverage/
+.cache/
+sites/one/public/favicon.svg
+sites/one/public/apple-touch-icon.png

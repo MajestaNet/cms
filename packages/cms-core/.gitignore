@@ -1,0 +1,4 @@
+# Shared CMS library: catalog, pin, content map, notify payload, source resolve, link rewrite.
+node_modules/
+dist/
+coverage/

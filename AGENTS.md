@@ -6,7 +6,7 @@ Majesta CMS is the **public-docs aggregator** for Majesta Net products: overlay,
 
 It is **not** Majesta One, Majesta Two, or the company website. Those stay in `MajestaNet/one`, `MajestaNet/two`, and `MajestaNet/webpage`. Product images must never contain this tree.
 
-**Status:** design seed. There is no Astro app and no live `one.majesta.net` yet. Do not scaffold Starlight unless the user asked for Phases 1–2 in [BUILD-PLAN.md](./BUILD-PLAN.md).
+**Status:** Phases 1–2 are scaffolded. `make docs-check` and `make build` must stay green. Pin is `unset`; production publish must fail closed. Do not default it to `main`.
 
 ## Read first
 

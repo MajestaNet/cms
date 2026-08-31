@@ -1,0 +1,12 @@
+---
+const unpublished = import.meta.env.PUBLIC_CMS_SOURCE_MODE !== 'pin';
+---
+
+{
+  unpublished && (
+    <p class="cms-unpublished" role="status">
+      Pin unset — this build uses the fixture source tree, not a Majesta One <code>v*</code> tag.
+      It is not production for one.majesta.net.
+    </p>
+  )
+}

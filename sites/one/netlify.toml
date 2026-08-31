@@ -1,0 +1,19 @@
+# Paths are relative to the base directory (repo root if base is unset).
+[build]
+  command = "npm ci && npm test && npm run docs-check && npm run build --workspace=@majestanet/one-docs"
+  publish = "sites/one/dist"
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- sites/one brand packages/cms-core fixtures/one package.json package-lock.json"
+
+[build.environment]
+  NODE_VERSION = "22"
+  ASTRO_TELEMETRY_DISABLED = "1"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
