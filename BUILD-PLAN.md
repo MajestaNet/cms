@@ -1,6 +1,6 @@
 # Build plan — Majesta CMS aggregator
 
-**Status:** Design seed in `MajestaNet/cms`. Starlight is not scaffolded yet.  
+**Status:** Phases 1–2 are in this repo (`@majestanet/cms-core`, Starlight under `sites/one`). Pin for One is still `unset`.  
 **Design:** [DESIGN.md](./DESIGN.md) · **Agent:** [AGENT.md](./AGENT.md) · **Netlify:** [NETLIFY.md](./NETLIFY.md) · **Brand:** [BRAND.md](./BRAND.md)
 
 ## Goal

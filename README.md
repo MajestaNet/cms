@@ -40,7 +40,8 @@ The machine-readable registry is [`sites/catalog.yaml`](./sites/catalog.yaml). A
 | Doc | Role |
 |---|---|
 | [DESIGN.md](./DESIGN.md) | Thesis, loop, pin + overlay, branding, non-goals |
-| [BUILD-PLAN.md](./BUILD-PLAN.md) | Phases (this PR is design seed, not Starlight) |
+| [BUILD-PLAN.md](./BUILD-PLAN.md) | Phases (1–2 scaffolded; 3–5 later) |
+| [STACK.md](./STACK.md) | Pinned Node / Astro / Starlight versions |
 | [AGENT.md](./AGENT.md) | Global writer fence; routes to the site playbook |
 | [BRAND.md](./BRAND.md) | Majesta identity inherited from `webpage` |
 | [NETLIFY.md](./NETLIFY.md) | One repo → many sites → many subdomains |
@@ -49,7 +50,15 @@ The machine-readable registry is [`sites/catalog.yaml`](./sites/catalog.yaml). A
 
 ## Status
 
-**Design seed.** Starlight, `docs-check`, and Netlify site entries are not in this tree yet. Pin for One is `unset` — do not pretend `one.majesta.net` is live, and do not default that pin to `MajestaNet/one` `main`.
+**Phases 1–2 scaffolded.** `@majestanet/cms-core` validates catalog, notify payloads, pins, and content maps. `sites/one` is Astro Starlight. Pin for One is still `unset` — production publish fails closed (does not fetch `main`). CI and Deploy Previews use `fixtures/one/` and send `noindex`.
+
+```bash
+npm ci
+make test
+make docs-check
+make build     # fixture source while pin is unset
+make dev       # http://127.0.0.1:4322/
+```
 
 All Majesta **source** repos this aggregator reads are public Apache-2.0. The aggregator fetches them over GitHub; it does not need install credentials.
 

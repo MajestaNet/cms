@@ -24,20 +24,9 @@ For each site:
 5. Turn **Deploy Previews** on. Production publish from **CMS** `main` after a human merge.
 6. Functions / Identity / Forms **off**.
 
-### Example `sites/one/netlify.toml` (when scaffolded)
+The file in the tree is [`sites/one/netlify.toml`](./sites/one/netlify.toml). Package directory `sites/one`, base directory unset (repo root). `ignore` must stay set: a change under `sites/two` must not rebuild `one.majesta.net`. `brand`, `packages/cms-core`, and `fixtures/one` are part of that site’s inputs.
 
-```toml
-# Paths are relative to the base directory (repo root if base is unset).
-[build]
-  command = "npm ci && npm run build --workspace=sites/one"
-  publish = "sites/one/dist"
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- sites/one brand"
-
-[build.environment]
-  NODE_VERSION = "22"
-```
-
-Adjust `command` / `publish` to match the scaffold (workspace vs `cd sites/one && npm ci && npm run build`). The important part is **`ignore`**: a change under `sites/two` must not rebuild `one.majesta.net`. Include `brand` so identity updates can rebuild docs hosts that serve those files.
+Production context (`CONTEXT=production`) fails if `sites/one/pin` is `unset`. Deploy Previews use the fixture tree and `noindex`.
 
 By default, any commit under the repo root can trigger **all** connected sites. Custom `ignore` is required.
 

@@ -1,0 +1,87 @@
+/* Majesta.Net identity — tokens from BRAND.md / webpage DESIGN.md */
+
+:root,
+:root[data-theme='light'],
+:root[data-theme='dark'] {
+  --mn-navy: #1b2e46;
+  --mn-gold: #f6cf55;
+  --mn-ivory: #f5f1e8;
+  --mn-slate: #697685;
+
+  --sl-font: var(--font-text), Inter, ui-sans-serif, system-ui, sans-serif;
+  --sl-font-headings: var(--font-display), 'Josefin Sans', ui-sans-serif, sans-serif;
+
+  --sl-color-accent-low: #d9e0e8;
+  --sl-color-accent: var(--mn-navy);
+  --sl-color-accent-high: var(--mn-navy);
+  --sl-color-white: var(--mn-ivory);
+  --sl-color-gray-1: #2a3d54;
+  --sl-color-gray-2: var(--mn-navy);
+  --sl-color-gray-3: #4a5c70;
+  --sl-color-gray-4: var(--mn-slate);
+  --sl-color-gray-5: #c5c0b4;
+  --sl-color-gray-6: #e6e0d4;
+  --sl-color-gray-7: var(--mn-ivory);
+  --sl-color-black: var(--mn-navy);
+  --sl-color-bg: var(--mn-ivory);
+  --sl-color-bg-nav: var(--mn-navy);
+  --sl-color-bg-sidebar: var(--mn-ivory);
+  --sl-color-hairline: #d4cfc4;
+  --sl-color-text: var(--mn-navy);
+  --sl-color-text-accent: var(--mn-navy);
+  --sl-color-text-invert: var(--mn-ivory);
+}
+
+html {
+  color-scheme: light;
+}
+
+:root {
+  --sl-nav-height: 4.75rem;
+}
+
+/* Lockup in the navy header: keep it ≥180px wide (BRAND.md). Stroke artwork needs height. */
+.header {
+  border-bottom: 1px solid rgba(246, 207, 85, 0.35);
+  background-color: var(--mn-navy) !important;
+}
+
+.title-wrapper {
+  min-width: 180px;
+  overflow: visible;
+}
+
+.site-title img,
+.site-title svg {
+  height: 2.55rem;
+  width: auto;
+  min-width: 180px;
+  max-width: none;
+  max-height: 3rem;
+  filter: none !important;
+}
+
+.cms-unpublished {
+  margin: 0;
+  padding: 0.65rem 1.25rem;
+  background: var(--mn-navy);
+  color: var(--mn-ivory);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.cms-unpublished code {
+  color: var(--mn-gold);
+  background: transparent;
+}
+
+starlight-theme-select {
+  display: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}

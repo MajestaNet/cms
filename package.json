@@ -1,0 +1,18 @@
+{
+  "name": "majesta-cms",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "sites/one"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "test": "npm test --workspace=@majestanet/cms-core",
+    "docs-check": "npm run docs-check --workspace=@majestanet/cms-core && npm run check --workspace=@majestanet/one-docs",
+    "build": "npm run build --workspace=@majestanet/one-docs",
+    "dev": "npm run dev --workspace=@majestanet/one-docs"
+  }
+}

@@ -1,0 +1,15 @@
+---
+import Default from '@astrojs/starlight/components/Head.astro';
+---
+
+<script is:inline>
+	try {
+		localStorage.setItem('starlight-theme', 'light');
+	} catch {
+		/* ignore */
+	}
+	document.documentElement.dataset.theme = 'light';
+</script>
+<Default>
+	<slot />
+</Default>

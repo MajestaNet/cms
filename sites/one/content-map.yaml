@@ -6,6 +6,7 @@
 pages:
   /:
     sources: [README.md, docs/glossary.md]
+    include: false
     note: Short rewrite of product nouns. Do not dump the full README.
   /install:
     sources: [docs/self-host.md]
@@ -21,15 +22,20 @@ pages:
     note: Pin One-API-Revision; min/current. Not a parallel site tree.
   /api/client:
     sources: [docs/api-families.md]
-    note: Split to docs/api/client.md in the source repo when the family page is too long.
+    include: false
+    note: Overlay only until the source repo splits docs/api/client.md. Do not paste api-families five times.
   /api/metadata:
     sources: [docs/api-families.md]
+    include: false
   /api/deploy:
     sources: [docs/api-families.md]
+    include: false
   /api/ops:
     sources: [docs/api-families.md]
+    include: false
   /api/auth:
     sources: [docs/api-families.md]
+    include: false
   /modules:
     sources: [docs/modules/README.md, docs/modules/*.md]
   /customization:

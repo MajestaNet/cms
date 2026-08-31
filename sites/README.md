@@ -15,7 +15,7 @@ One directory per **Netlify site** / public hostname, registered in [catalog.yam
 | `content-map.yaml` | Allowlisted source paths → public pages |
 | `pin` | Production source revision (`unset` until first publish) |
 
-Later (Phase 2): Starlight app files and `netlify.toml` in the same directory. Overlay pages belong with that app (Starlight `src/content/docs/` or equivalent) — include pinned source markdown at build time; do not commit a second wiki.
+Phase 2 (One): Starlight app files and `netlify.toml` live in `sites/one/`. Overlay pages are `src/content/docs/`. Mapped source markdown is included at build time from the pin (or `fixtures/<id>/` while unset). Do not commit a second wiki.
 
 ## Adding a product
 
