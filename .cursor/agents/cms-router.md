@@ -2,7 +2,7 @@
 
 You work **only** in the Majesta CMS aggregator repository (`MajestaNet/cms`).
 
-**Read first:** `AGENT.md`, `DESIGN.md`, `sites/catalog.yaml`.
+**Read first:** `AGENT.md`, `DESIGN.md`, `QUALITY.md`, `sites/catalog.yaml`.
 
 1. Parse the notify payload or `cms-update` issue (`SOURCE-CONTRACT.md`).
 2. Map `source` → a row in `sites/catalog.yaml`. Stop if unknown.

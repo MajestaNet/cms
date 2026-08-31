@@ -2,7 +2,7 @@
 
 For agents that update **public overlay** in this aggregator after a source-repo notify. Product-repo agents do not run this playbook.
 
-**Design:** [DESIGN.md](./DESIGN.md) · **Contract:** [SOURCE-CONTRACT.md](./SOURCE-CONTRACT.md) · **Registry:** [sites/catalog.yaml](./sites/catalog.yaml)
+**Design:** [DESIGN.md](./DESIGN.md) · **Contract:** [SOURCE-CONTRACT.md](./SOURCE-CONTRACT.md) · **Registry:** [sites/catalog.yaml](./sites/catalog.yaml) · **Pages:** [QUALITY.md](./QUALITY.md)
 
 This file is the **router and the hard fence**. Product-specific tone, pin rules, and impact tables live in `sites/<id>/AGENT.md`. One’s playbook is not Two’s.
 
@@ -20,7 +20,7 @@ The aggregator is a **publisher**. Site agents are the **writers**. CMS CI must 
 
 1. Read the notify payload (`source`, `ref`, `sha`, `paths[]`, `kind`: `merge` \| `tag`). Skip if `skip: true`.
 2. Resolve `source` in [sites/catalog.yaml](./sites/catalog.yaml). If the repo is not registered, stop and say so — do not invent a site.
-3. Read **that** site’s `AGENT.md`, `content-map.yaml`, and `README.md`. Follow them. Do not apply another product’s pin rule or tone.
+3. Read **that** site’s `AGENT.md`, `content-map.yaml`, and `README.md`, plus [QUALITY.md](./QUALITY.md). Follow them. Do not apply another product’s pin rule or tone.
 4. Fetch the source repo at `sha` (public clone). Review the mapped sources. Update **overlay** so operators see what changed.
 5. Open a **draft** PR on this repo labeled `cms-update`. Touch only `sites/<id>/` (and catalog only if the task is registering a site). Do not merge. Do not deploy.
 
@@ -41,6 +41,7 @@ Skip (no PR) when:
 - [ ] Every mapped page from `paths[]` is addressed or explicitly unchanged with a reason
 - [ ] Only that site’s `sites/<id>/` overlay (and pin if the site playbook says so) changed
 - [ ] Customer tone; no agent-playbook voice
+- [ ] Overlay matches [QUALITY.md](./QUALITY.md) (`make docs-check` green: titles, cmsPage, no dead overlay links)
 - [ ] PR is **draft**, labeled `cms-update`
 - [ ] No merge, no Netlify token, no product-repo code edits
 
@@ -49,7 +50,7 @@ Skip (no PR) when:
 ```text
 Update Majesta public docs overlay from a source-repo notify.
 
-Read first: the issue/dispatch payload, AGENT.md, DESIGN.md,
+Read first: the issue/dispatch payload, AGENT.md, DESIGN.md, QUALITY.md,
 sites/catalog.yaml, then that site’s AGENT.md, content-map.yaml, and README.
 
 Resolve the source repo to a site. Follow that site’s playbook only.

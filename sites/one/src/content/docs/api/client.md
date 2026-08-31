@@ -6,4 +6,4 @@ cmsPage: /api/client
 
 The Client family is data work: records, queries, and related document operations operators actually call.
 
-Until `MajestaNet/one` splits `docs/api/client.md`, the curated endpoint list lives on [API families](/api/families). This page will not paste that file a second time.
+Curated endpoints for this family are listed on [API families](/api/families). This page does not paste that file a second time.

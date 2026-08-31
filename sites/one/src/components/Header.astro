@@ -1,0 +1,28 @@
+---
+import Search from '@astrojs/starlight/components/Search.astro';
+import SiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
+import SocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
+
+/**
+ * One header on every page (docs, 404, with or without sidebar).
+ * Starlight’s default grid shifts the lockup against the content column
+ * and leaves a theme-toggle gutter. Brand identity has no theme toggle.
+ */
+---
+
+<div class="mn-header">
+	<div class="mn-header-brand">
+		<div class="title-wrapper sl-flex">
+			<SiteTitle />
+		</div>
+		<a href="/" class="mn-product">One</a>
+	</div>
+	<div class="mn-header-search sl-flex print:hidden">
+		<Search />
+	</div>
+	<div class="mn-header-end sl-hidden md:sl-flex print:hidden">
+		<div class="sl-flex social-icons">
+			<SocialIcons />
+		</div>
+	</div>
+</div>

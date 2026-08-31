@@ -1,6 +1,6 @@
 # Site agent — `<id>` (template)
 
-Replace this file. The global fence in [`../../AGENT.md`](../../AGENT.md) still applies (draft PR, no merge, no `NETLIFY_*`, no product-repo edits). Everything below is product-specific.
+Replace this file. The global fence in [`../../AGENT.md`](../../AGENT.md) still applies (draft PR, no merge, no `NETLIFY_*`, no product-repo edits). Page shape, chrome, and links: [`../../QUALITY.md`](../../QUALITY.md). Copy [`overlay-page.md`](./overlay-page.md) into `src/content/docs/` when this site has Starlight.
 
 ## Source
 
