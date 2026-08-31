@@ -1,0 +1,4 @@
+# Production pin for this site (source repo tag or SHA).
+# unset means "not published yet" — do not default to the source default branch
+# unless this site’s AGENT.md explicitly publishes from main.
+unset

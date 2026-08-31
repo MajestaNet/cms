@@ -1,0 +1,14 @@
+# Registry of public-docs sites published from this aggregator.
+# The router agent (AGENT.md) maps notify.source → a row here.
+# A folder under sites/ is a Netlify site only if it appears in this file.
+# sites/_template is not a site.
+
+sites:
+  - id: one
+    source_repo: MajestaNet/one
+    directory: sites/one
+    hostname: one.majesta.net
+    netlify_site: majesta-one-docs
+    agent: sites/one/AGENT.md
+    production_pin: tag-v
+    pin_file: sites/one/pin
