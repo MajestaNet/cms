@@ -17,4 +17,3 @@ Lead with **MCP + `one` + family HTTP**. Pin `One-API-Revision` for the image yo
 
 This site tracks a product `v*` tag (the same version string as GHCR). It does not publish from `MajestaNet/one` `main`.
 
-[Source & contributing](https://github.com/MajestaNet/one) stays on GitHub. Agent playbooks and the backlog are not part of this host.

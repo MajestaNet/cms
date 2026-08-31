@@ -87,6 +87,8 @@ export default defineConfig({
         ThemeSelect: './src/components/ThemeSelect.astro',
         Banner: './src/components/Banner.astro',
         Head: './src/components/Head.astro',
+        Header: './src/components/Header.astro',
+        Footer: './src/components/Footer.astro',
       },
       head: unpublished
         ? [{ tag: 'meta', attrs: { name: 'robots', content: 'noindex' } }]

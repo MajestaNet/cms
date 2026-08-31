@@ -1,4 +1,4 @@
-/* Majesta.Net identity — tokens from BRAND.md / webpage DESIGN.md */
+/* Majesta.Net identity — tokens from BRAND.md / QUALITY.md / webpage DESIGN.md */
 
 :root,
 :root[data-theme='light'],
@@ -40,10 +40,37 @@ html {
   --sl-nav-height: 4.75rem;
 }
 
-/* Lockup in the navy header: keep it ≥180px wide (BRAND.md). Stroke artwork needs height. */
-.header {
-  border-bottom: 1px solid rgba(246, 207, 85, 0.35);
+/* ---- Header: same chrome on every template ---- */
+
+header.header {
   background-color: var(--mn-navy) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--mn-gold) 35%, transparent);
+  padding-inline-end: var(--sl-nav-pad-x);
+}
+
+.mn-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.mn-header-brand {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.mn-header-search {
+  flex: 1 1 auto;
+  justify-content: flex-end;
+}
+
+.mn-header-end {
+  flex: 0 0 auto;
+  align-items: center;
 }
 
 .title-wrapper {
@@ -61,13 +88,68 @@ html {
   filter: none !important;
 }
 
+.mn-product {
+  margin-inline-start: 0.85rem;
+  padding-inline-start: 0.85rem;
+  border-inline-start: 1px solid color-mix(in srgb, var(--mn-gold) 45%, transparent);
+  color: var(--mn-gold);
+  font-family: var(--sl-font-headings);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.mn-product:hover {
+  color: var(--mn-ivory);
+}
+
+/* Header controls must be ivory/gold on navy — body tokens are navy-on-ivory. */
+header.header site-search button[data-open-modal] {
+  color: var(--mn-ivory);
+  background: transparent;
+}
+
+@media (min-width: 50rem) {
+  header.header site-search button[data-open-modal] {
+    background: color-mix(in srgb, var(--mn-ivory) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--mn-gold) 40%, transparent);
+    color: var(--mn-ivory);
+    max-width: 16rem;
+  }
+
+  header.header site-search button[data-open-modal]:hover {
+    border-color: var(--mn-gold);
+    color: var(--mn-gold);
+  }
+}
+
+header.header .social-icons a {
+  color: var(--mn-gold);
+}
+
+header.header .social-icons a:hover {
+  color: var(--mn-ivory);
+}
+
+header.header .social-icons::after {
+  display: none;
+}
+
+starlight-theme-select {
+  display: none;
+}
+
 .cms-unpublished {
-  margin: 0;
+  margin: 0 0 1.25rem;
   padding: 0.65rem 1.25rem;
-  background: var(--mn-navy);
+  background: color-mix(in srgb, var(--mn-gold) 14%, var(--mn-navy));
   color: var(--mn-ivory);
   font-size: 0.9rem;
   text-align: center;
+  border-radius: 0;
 }
 
 .cms-unpublished code {
@@ -75,8 +157,40 @@ html {
   background: transparent;
 }
 
-starlight-theme-select {
-  display: none;
+/* ---- Footer / pagination: navy on ivory, never ivory-on-ivory ---- */
+
+.mn-footer {
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--sl-color-hairline);
+}
+
+.mn-footer-source {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--mn-slate);
+}
+
+.mn-footer-source a {
+  color: var(--mn-navy);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.pagination-links a {
+  color: var(--mn-navy) !important;
+  background: var(--mn-ivory);
+  box-shadow: none !important;
+}
+
+.pagination-links a:hover {
+  border-color: var(--mn-navy) !important;
+}
+
+.pagination-links .link-title {
+  color: var(--mn-navy) !important;
 }
 
 h1,
@@ -84,4 +198,21 @@ h2,
 h3 {
   font-weight: 400;
   letter-spacing: 0.02em;
+}
+
+@media (max-width: 49.99rem) {
+  :root[data-has-sidebar] header.header {
+    padding-inline-end: calc(var(--sl-nav-gap) + var(--sl-nav-pad-x) + var(--sl-menu-button-size));
+  }
+
+  .mn-product {
+    /* Keep the lockup; do not clip “ONE” to a single letter next to the menu. */
+    display: none;
+  }
+
+  .site-title img,
+  .site-title svg {
+    min-width: 0;
+    width: min(180px, 42vw);
+  }
 }

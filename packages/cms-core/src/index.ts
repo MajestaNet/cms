@@ -24,12 +24,34 @@ export {
   type ContentMap,
   type PageMap,
 } from './content-map.ts';
-export { rewriteHref, rewriteMarkdownLinks, type LinkRewriteContext } from './links.ts';
+export {
+  rewriteHref,
+  rewriteMarkdownLinks,
+  classifyHref,
+  asPublicPage,
+  publicPagesFromRoutes,
+  type LinkRewriteContext,
+  type LinkDecision,
+} from './links.ts';
+export {
+  checkOverlayPages,
+  checkOverlayBody,
+  overlayRelPath,
+  splitOverlay,
+  formatOverlayIssues,
+  type OverlayCheckIssue,
+} from './overlay.ts';
 export {
   resolveSource,
   isProductionPublish,
   listTreeFiles,
   type ResolvedSource,
 } from './source.ts';
-export { remarkCmsSources, pageFromDocsFile, type CmsRemarkOptions } from './remark-cms-sources.ts';
+export {
+  remarkCmsSources,
+  pageFromDocsFile,
+  includedSourceTree,
+  stripYamlFrontmatter,
+  type CmsRemarkOptions,
+} from './remark-cms-sources.ts';
 export { checkAllSites, type SiteCheck } from './check.ts';

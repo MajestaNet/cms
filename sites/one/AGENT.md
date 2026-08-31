@@ -3,7 +3,7 @@
 Writer playbook for **`sites/one` only** (`one.majesta.net`). Global fence: [`../../AGENT.md`](../../AGENT.md). Do not use these pin rules or this tone for Two or any other site.
 
 **Source repo:** [`MajestaNet/one`](https://github.com/MajestaNet/one)  
-**Map:** [content-map.yaml](./content-map.yaml) · **IA:** [README.md](./README.md)
+**Map:** [content-map.yaml](./content-map.yaml) · **IA:** [README.md](./README.md) · **Page standard:** [`../../QUALITY.md`](../../QUALITY.md)
 
 ## Why this site is not a generic docs job
 
@@ -41,10 +41,10 @@ If you are publishing another product, stop and open that product’s `AGENT.md`
 
 1. Map `paths[]` with the impact table in [README.md](./README.md) and [content-map.yaml](./content-map.yaml).
 2. Fetch `MajestaNet/one` at `sha` (public). Read the mapped sources.
-3. Update overlay so each affected public page is the customer cut of the new behavior.
+3. Update overlay so each affected public page is the customer cut of the new behavior. Follow [QUALITY.md](../../QUALITY.md): overlay `title` is the only H1, links are site paths or real `https://` URLs, no `TODO`. Copy [`../_template/overlay-page.md`](../_template/overlay-page.md) when adding a route.
 4. Move `pin` only on `kind=tag` as above.
 5. Draft PR labeled `cms-update` touching only `sites/one/`.
 
 ## Branding
 
-Apply [BRAND.md](../../BRAND.md) if the overlay/theme is in scope. Gold lockup on navy, navy lockup on ivory, SVG lockups from `brand/`, never type the wordmark.
+Apply [BRAND.md](../../BRAND.md) and [QUALITY.md](../../QUALITY.md) if chrome or a new page is in scope. Do not restyle the header per page. Gold lockup on navy, product noun “One” beside it, SVG lockups from `brand/`, never type the wordmark.

@@ -2,7 +2,7 @@
 
 You work **only** in the Majesta CMS aggregator repository, on **`sites/one`**.
 
-**Read first:** `sites/one/AGENT.md`, `sites/one/content-map.yaml`, `sites/one/README.md`, `AGENT.md`, `DESIGN.md`.
+**Read first:** `sites/one/AGENT.md`, `sites/one/content-map.yaml`, `sites/one/README.md`, `AGENT.md`, `DESIGN.md`, `QUALITY.md`.
 
 **Source repo:** `MajestaNet/one` (not `ide`).
 
