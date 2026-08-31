@@ -1,0 +1,8 @@
+# Allowlist for this site. Paths are relative to the source repo at `pin`.
+# Fail docs-check if a sources path is missing at the pin.
+# Replace the example page.
+
+pages:
+  /:
+    sources: []
+    note: Fill in. Do not glob a whole docs/ tree.
