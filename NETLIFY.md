@@ -250,7 +250,7 @@ Starlight search runs Pagefind in a WASM module and a `blob:` worker. Each site�
 
 Do **not** add `'unsafe-eval'`. `wasm-unsafe-eval` is the narrow WebAssembly compile exception; it is not a general eval hole.
 
-`style-src 'self' 'unsafe-inline'` stays — Starlight and Pagefind inject layout CSS. Inline **scripts** stay off the wide-open path: theme force is `/theme-light.js` (`'self'`). Starlight’s remaining inline snippets (search shortcut chip, sidebar persist) are progressive enhancement; if a browser blocks them under `script-src 'self'`, search and nav still work.
+`style-src 'self' 'unsafe-inline'` stays — Starlight and Pagefind inject layout CSS. Theme force is `/theme-light.js` (`'self'`), so that is not an inline script. An audit of the built HTML found Starlight still inlines a few snippets: the search shortcut chip, sidebar persist, and the mobile menu custom element. Those are blocked by `script-src 'self'` alone (the menu would not open). The extra token is a **narrow `'unsafe-inline'`** on `script-src` — not `'unsafe-eval'`, and not extra hosts. Do not widen `script-src` to `*`.
 
 Pagefind exists only after `make build`. `make dev` does not index.
 
