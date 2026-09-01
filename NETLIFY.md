@@ -241,6 +241,21 @@ You can add a third and fourth site the same way. The limit is “one Netlify si
 
 When Two is ready, run the same checklist with `sites/two` / `two.majesta.net` / a **new** Netlify site.
 
+## Content-Security-Policy (Pagefind search)
+
+Starlight search runs Pagefind in a WASM module and a `blob:` worker. Each site’s `netlify.toml` CSP must include:
+
+- `script-src 'self' 'wasm-unsafe-eval'`
+- `worker-src 'self' blob:`
+
+Do **not** add `'unsafe-eval'`. `wasm-unsafe-eval` is the narrow WebAssembly compile exception; it is not a general eval hole.
+
+`style-src 'self' 'unsafe-inline'` stays — Starlight and Pagefind inject layout CSS. Inline **scripts** stay off the wide-open path: theme force is `/theme-light.js` (`'self'`). Starlight’s remaining inline snippets (search shortcut chip, sidebar persist) are progressive enhancement; if a browser blocks them under `script-src 'self'`, search and nav still work.
+
+Pagefind exists only after `make build`. `make dev` does not index.
+
+`packages/cms-core/tests/netlify.test.ts` asserts those two CSP substrings on `sites/one/netlify.toml` and `sites/_template/netlify.toml`.
+
 ## Troubleshooting
 
 | Symptom | Likely cause |

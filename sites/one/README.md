@@ -6,6 +6,8 @@ Customer-facing docs for the Majesta One install (API-first, no embedded UI). So
 
 **Writer:** [AGENT.md](./AGENT.md) — do not use this playbook for Two or any other site.
 
+**Search:** Pagefind exists only after `make build`. `make dev` (`npm run dev`) does not index; the modal is a stub. Use `npm run preview --workspace=@majestanet/one-docs` (http://127.0.0.1:4322/) to try search. Do not add Pagefind-in-dev.
+
 ## Public IA
 
 ```text

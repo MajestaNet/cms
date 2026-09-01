@@ -109,3 +109,16 @@ describe('checkSiteNetlifyToml', () => {
     ).toThrow(/publish must be sites\/one\/dist/);
   });
 });
+
+describe('Pagefind CSP', () => {
+  const files = ['sites/one/netlify.toml', 'sites/_template/netlify.toml'];
+
+  it('allows Pagefind WASM and blob workers without unsafe-eval', () => {
+    for (const file of files) {
+      const text = readFileSync(join(repoRoot, file), 'utf8');
+      expect(text).toContain("script-src 'self' 'wasm-unsafe-eval'");
+      expect(text).toContain("worker-src 'self' blob:");
+      expect(text).not.toContain("'unsafe-eval'");
+    }
+  });
+});
