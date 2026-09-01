@@ -30,6 +30,12 @@ Land the aggregator contract in `MajestaNet/cms`: design, global + per-site agen
 4. `make docs-check` (or npm equivalent) in **this** repo only.
 5. Connect the Netlify GitHub app for Deploy Previews. Custom domain can wait until Phase 4.
 
+### Phase 2 follow-on — One chrome ([CHROME.md](./CHROME.md))
+
+The Starlight scaffold locked the navy/gold header but inverted Starlight light-theme tokens (`--sl-color-white` → ivory), so desktop sidebar labels and H1s disappear on ivory. Search sits on the right (correct) but Pagefind is blocked by the Netlify CSP, and radii still mix Starlight pills with the webpage’s square hairlines.
+
+Implement in the three cuts in [CHROME.md](./CHROME.md): remap tokens + Josefin, then CSP + search restyle, then one edge language. Do not default the pin. Do not treat this as a `cms-update` overlay job.
+
 ### Phase 3 — CMS agent wiring
 
 Playbook: [AGENT.md](./AGENT.md) + `sites/<id>/AGENT.md`. Trigger: `repository_dispatch` (or issue labeled `cms-update`) with the notify payload. Output: **draft** PR on this repo. Forbidden: merge, Netlify prod, source-repo product code.

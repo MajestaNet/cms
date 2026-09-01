@@ -10,7 +10,7 @@ It is **not** Majesta One, Majesta Two, or the company website. Those stay in `M
 
 ## Read first
 
-[DESIGN.md](./DESIGN.md), [AGENT.md](./AGENT.md), [BRAND.md](./BRAND.md), [QUALITY.md](./QUALITY.md), [sites/catalog.yaml](./sites/catalog.yaml). For One work, also [sites/one/AGENT.md](./sites/one/AGENT.md).
+[DESIGN.md](./DESIGN.md), [AGENT.md](./AGENT.md), [BRAND.md](./BRAND.md), [QUALITY.md](./QUALITY.md), [CHROME.md](./CHROME.md), [sites/catalog.yaml](./sites/catalog.yaml). For One work, also [sites/one/AGENT.md](./sites/one/AGENT.md).
 
 ## Writer jobs (source-repo notify)
 

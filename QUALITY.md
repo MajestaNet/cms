@@ -14,13 +14,16 @@ Every HTML page on a product host uses the same shell:
 |---|---|
 | Header | Navy bar (`#1B2E46`). Gold lockup (`brand/logo-gold.svg`) ≥180px wide. Product name in gold next to the lockup (typed product noun only — never recreate the `MAJESTA.NET` wordmark). Search and GitHub on the right, ivory/gold on navy. |
 | Theme | No dark/light toggle. Force light. Header tokens are **not** body tokens: navy icons on a navy bar are a defect. |
+| Starlight tokens | Light-theme semantics: `--sl-color-white` is strongest **text** (navy), `--sl-color-black` is the **page fill** (ivory). Never set `white` to ivory to make the header work — override header controls locally. Ivory-on-ivory sidebar labels and H1s are a defect. |
+| Type | Josefin Sans for H1–H3 and the product noun; Inter for body and nested nav. Starlight does not apply `--sl-font-headings` by itself. |
+| Edges | Square corners (`border-radius: 0`). One hairline: `color-mix(in srgb, #1B2E46 12%, transparent)`. No pill search, no circular menu button. |
 | Layout | Same header on docs, 404, with or without a sidebar. Do not use Starlight’s default grid that shifts the lockup against the content column. |
 | Banner | Fixture/unpublished pin only. Not a second navy header. |
 | Page title | Overlay `title` is the only H1 (Starlight `PageTitle`). Included source must not bring a competing H1. |
 | Footer | “Source & contributing” → the product GitHub repo. No “Edit this page” on overlay files. Pagination titles are navy on ivory. |
 | 404 | Same header. Splash body is allowed. Do not add `cmsPage`. |
 
-One (`sites/one`) already implements this via `src/components/Header.astro`, `Footer.astro`, `Head.astro`, and `src/styles/custom.css`. A new Starlight site copies those and changes only the product noun and the source-repo URL.
+One (`sites/one`) implements this via `src/components/Header.astro`, `Footer.astro`, `Head.astro`, and `src/styles/custom.css`. The generated site still inverts `--sl-color-white` / `--sl-color-black` and leaves Starlight radii on search and pagination — see [CHROME.md](./CHROME.md). A new Starlight site copies the finished chrome (not the inverted tokens) and changes only the product noun and the source-repo URL.
 
 ## Overlay page shape
 

@@ -103,7 +103,7 @@ Do not glob a whole `docs/` tree. Use a per-site content map ([sites/one/content
 
 ## Branding
 
-Docs sites use the same identity as [majesta.net](https://majesta.net): gold lockup on reference navy, navy lockup on ivory, Josefin Sans for display, Inter for text. Source of truth for tokens and copy rules: [BRAND.md](./BRAND.md). Artwork: [`brand/`](./brand/).
+Docs sites use the same identity as [majesta.net](https://majesta.net): gold lockup on reference navy, navy lockup on ivory, Josefin Sans for display, Inter for text. Source of truth for tokens and copy rules: [BRAND.md](./BRAND.md). Artwork: [`brand/`](./brand/). How those tokens map onto Starlight (and the current One defects): [CHROME.md](./CHROME.md).
 
 The company apex (`majesta.net`) stays the existing `MajestaNet/webpage` Netlify site. This aggregator does not take over the marketing host.
 
