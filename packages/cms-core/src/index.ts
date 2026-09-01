@@ -44,6 +44,7 @@ export {
 export {
   resolveSource,
   isProductionPublish,
+  isLivePublish,
   listTreeFiles,
   type ResolvedSource,
 } from './source.ts';
