@@ -23,7 +23,7 @@ Every HTML page on a product host uses the same shell:
 | Footer | “Source & contributing” → the product GitHub repo. No “Edit this page” on overlay files. Pagination titles are navy on ivory. |
 | 404 | Same header. Splash body is allowed. Do not add `cmsPage`. |
 
-One (`sites/one`) implements this via `src/components/Header.astro`, `Footer.astro`, `Head.astro`, and `src/styles/custom.css`. The generated site still inverts `--sl-color-white` / `--sl-color-black` and leaves Starlight radii on search and pagination — see [CHROME.md](./CHROME.md). A new Starlight site copies the finished chrome (not the inverted tokens) and changes only the product noun and the source-repo URL.
+One (`sites/one`) implements this via `src/components/Header.astro`, `Footer.astro`, `Head.astro`, `ThemeProvider.astro`, and `src/styles/custom.css`. Starlight light-theme tokens stay navy text / ivory fill — do not invert them for the header. Copy the finished chrome from [`sites/_template/`](./sites/_template/) (not the old inverted mapping) and change only the product noun and the source-repo URL. The three-cut plan is [CHROME.md](./CHROME.md).
 
 ## Overlay page shape
 
