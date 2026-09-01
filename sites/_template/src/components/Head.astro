@@ -1,8 +1,11 @@
 ---
 import Default from '@astrojs/starlight/components/Head.astro';
+import { Font } from 'astro:assets';
 ---
 
 <meta name="theme-color" content="#1B2E46" />
+<Font cssVariable="--font-display" />
+<Font cssVariable="--font-text" />
 {/* Force light before Starlight’s ThemeProvider slot in Page.astro. External file keeps script-src 'self'. */}
 <script is:inline src="/theme-light.js"></script>
 <Default>
