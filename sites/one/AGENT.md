@@ -47,4 +47,4 @@ If you are publishing another product, stop and open that product’s `AGENT.md`
 
 ## Branding
 
-Apply [BRAND.md](../../BRAND.md) and [QUALITY.md](../../QUALITY.md) if chrome or a new page is in scope. Do not restyle the header per page. Gold lockup on navy, product noun “One” beside it, SVG lockups from `brand/`, never type the wordmark.
+Apply [BRAND.md](../../BRAND.md) and [QUALITY.md](../../QUALITY.md) if chrome or a new page is in scope. Do not restyle the header per page. Gold lockup on navy, product noun “One” beside it, SVG lockups from `brand/`, never type the wordmark. Token mapping and the visual fix list: [CHROME.md](../../CHROME.md).

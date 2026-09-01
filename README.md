@@ -43,6 +43,7 @@ The machine-readable registry is [`sites/catalog.yaml`](./sites/catalog.yaml). A
 | [BUILD-PLAN.md](./BUILD-PLAN.md) | Phases (1–2 scaffolded; 3–5 later) |
 | [STACK.md](./STACK.md) | Pinned Node / Astro / Starlight versions |
 | [QUALITY.md](./QUALITY.md) | Overlay template, chrome, links — how agents add pages |
+| [CHROME.md](./CHROME.md) | One docs visual review + implementation plan (tokens, search, edges) |
 | [AGENT.md](./AGENT.md) | Global writer fence; routes to the site playbook |
 | [BRAND.md](./BRAND.md) | Majesta identity inherited from `webpage` |
 | [NETLIFY.md](./NETLIFY.md) | Operator runbook: One repo → many Netlify sites → many subdomains |
