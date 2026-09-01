@@ -26,12 +26,36 @@ export function repoRootFrom(metaUrl: string, up: number): string {
   return dir;
 }
 
-export function isProductionPublish(): boolean {
-  return (
-    process.env.CMS_PRODUCTION === '1' ||
-    process.env.CONTEXT === 'production' ||
-    process.env.NETLIFY_CONTEXT === 'production'
-  );
+const PRODUCT_HOST = /\.majesta\.net(?:[:/?#]|$)/i;
+
+/**
+ * Whether this process should treat the build as Netlify/CMS production.
+ *
+ * Vitest sets `VITEST` and runs inside the Netlify build command, which
+ * inherits `CONTEXT=production`. Tests must not fail-closed; opt in with
+ * `CMS_PRODUCTION=1`.
+ */
+export function isProductionPublish(env: NodeJS.ProcessEnv = process.env): boolean {
+  if (env.CMS_PRODUCTION === '1') return true;
+  if (env.VITEST) return false;
+  return env.CONTEXT === 'production' || env.NETLIFY_CONTEXT === 'production';
+}
+
+/**
+ * Whether an unset pin must refuse (no fixtures, no source `main`).
+ *
+ * A first Netlify site-create deploy is production context on `*.netlify.app`.
+ * That may use fixtures + noindex. Attaching `one.majesta.net` (or any
+ * `*.majesta.net` primary URL) fail-closes until a `v*` pin is set.
+ */
+export function isLivePublish(env: NodeJS.ProcessEnv = process.env): boolean {
+  if (env.CMS_PRODUCTION === '1') return true;
+  if (env.VITEST) return false;
+  const production = env.CONTEXT === 'production' || env.NETLIFY_CONTEXT === 'production';
+  if (!production) return false;
+  const url = env.URL ?? '';
+  if (!url) return true;
+  return PRODUCT_HOST.test(url);
 }
 
 export async function listTreeFiles(root: string): Promise<string[]> {
@@ -97,9 +121,9 @@ export async function resolveSource(opts: ResolveOptions): Promise<ResolvedSourc
   const site = siteById(catalog, opts.siteId);
   if (!site) throw new Error(`unknown site id ${opts.siteId}`);
   const pin = readPinFile(join(opts.repoRoot, site.pin_file));
-  const production = isProductionPublish();
+  const live = isLivePublish();
 
-  if (pin.kind === 'unset' && production) {
+  if (pin.kind === 'unset' && live) {
     throw new Error(
       `sites/${site.id}/pin is unset; refusing production publish (will not fetch ${site.source_repo} main)`,
     );

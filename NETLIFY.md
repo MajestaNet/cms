@@ -46,7 +46,8 @@ You do **not** invent a build command in the Netlify UI. The One package already
 | [`sites/one/netlify.toml`](./sites/one/netlify.toml) | Build command, publish dir, `ignore`, headers, Node 22 |
 | [`sites/_template/netlify.toml`](./sites/_template/netlify.toml) | Copy when adding Two (or any later site) |
 | Root `package.json` workspaces | `npm ci` at **repo root** (base directory unset) |
-| `CONTEXT=production` + `sites/one/pin` = `unset` | Production publish **fails closed** (does not fetch `main`) |
+| `URL` is `*.majesta.net` + pin `unset` | Production publish **fails closed** (does not fetch `main`) |
+| `URL` is still `*.netlify.app` + pin `unset` | Fixture + `noindex` (first site-create deploy) |
 
 There must be **no** root `netlify.toml`. `docs-check` enforces that, and that each catalog site’s `ignore` lists that site’s tree and shared inputs only.
 
@@ -104,15 +105,21 @@ On a CMS PR that touches One’s inputs, Netlify should run a **Deploy Preview**
 
 ### 1.5 Production while `pin` is `unset`
 
-`sites/one/pin` is currently `unset`. There is no `v*` tag on One yet. A production deploy (`CONTEXT=production`) **must fail** and must not fetch `MajestaNet/one` `main`.
+`sites/one/pin` is currently `unset`. There is no `v*` tag on One yet. The aggregator must not fetch `MajestaNet/one` `main` as a stand-in.
 
-Until a human sets `pin` to a real `v*` tag and merges that PR:
+Netlify’s **first deploy after you connect the repo is production context** (`CONTEXT=production`), even though it only lives at `*.netlify.app` until you attach a custom domain. People often call that a “preview.” It is not a Deploy Preview.
 
-- Prefer **Stop auto publishing** on `majesta-one-docs` (Deploys → Options) so `main` does not retry a failing production build.
-- Keep Deploy Previews on. Review overlay PRs there.
-- Do **not** set `pin` to `main` to “make the host work.”
+| Primary URL (`URL` env) | Unset pin |
+|---|---|
+| `https://<site>.netlify.app` | Fixture build + `noindex` (so the first site-create deploy can succeed) |
+| `https://one.majesta.net` | **Fail closed** — will not fetch `main` |
+| Deploy Preview / branch (`CONTEXT` ≠ `production`) | Fixture build + `noindex` |
 
-When the first `v*` pin lands and `make build` is green locally with `CMS_PRODUCTION=1`, **Resume auto publishing**, merge, and wait for a successful production deploy before pointing DNS at it.
+Do **not** attach `one.majesta.net` until a human sets `pin` to a `v*` tag. Attaching it first makes the next production deploy fail with `refusing production publish`.
+
+`npm test` runs inside that production context. Tests ignore Netlify `CONTEXT` unless `CMS_PRODUCTION=1`, so they keep asserting fixture mode while pin is unset.
+
+When the first `v*` pin lands and `make build` is green locally with `CMS_PRODUCTION=1`, merge, wait for a successful production deploy, **then** point DNS at it.
 
 ---
 
@@ -199,7 +206,7 @@ The router ([AGENT.md](./AGENT.md)) maps `notify.source` → that row. An unknow
 1. **Add new project** again, same GitHub repo `MajestaNet/cms`, same production branch `main`.
 2. Package directory **`sites/<id>`**. Base directory **unset**. Site name = catalog `netlify_site` (for Two, `majesta-two-docs` or whatever the row says).
 3. Deploy Previews on. Functions / Identity / Forms off.
-4. Same production-pin caution: fail closed / stop auto publishing until that site’s pin is real.
+4. Same production-pin caution: do not attach `*.majesta.net` until that site’s pin is real. A first `*.netlify.app` deploy may use fixtures.
 5. Custom domain: **one** hostname (`two.majesta.net`) on **this** new site. `CNAME` `two` → **this** site’s `*.netlify.app`, not One’s.
 
 You can add a third and fourth site the same way. The limit is “one Netlify site entry per catalog row,” not a new GitHub repository.
@@ -225,8 +232,9 @@ You can add a third and fourth site the same way. The limit is “one Netlify si
 - [ ] Netlify GitHub App can read `MajestaNet/cms` (not the product repos)
 - [ ] Site name `majesta-one-docs`, package directory `sites/one`, **base directory unset**
 - [ ] Deploy Previews on; Functions / Identity / Forms off
-- [ ] Production auto-publish stopped until `sites/one/pin` is a `v*` tag
-- [ ] First production deploy green after that pin merge
+- [ ] Do not attach `one.majesta.net` until `sites/one/pin` is a `v*` tag (unset pin fail-closes on that hostname)
+- [ ] First production deploy at `*.netlify.app` is fixture + `noindex` while pin is unset — that is expected
+- [ ] First production deploy green on the custom domain after that pin merge
 - [ ] `one.majesta.net` CNAME (or Netlify DNS) points at **this** site only
 - [ ] Apex `majesta.net` still the webpage site
 - [ ] No `NETLIFY_*` in this repo, in product repos, or in agent playbooks
@@ -237,8 +245,9 @@ When Two is ready, run the same checklist with `sites/two` / `two.majesta.net` /
 
 | Symptom | Likely cause |
 |---|---|
-| Production build: `pin is unset; refusing production publish` | Expected until a `v*` pin. Do not fetch `main`. |
+| Production build: `pin is unset; refusing production publish` on `one.majesta.net` | Expected until a `v*` pin. Do not fetch `main`. Detach the custom domain or set the pin. |
+| `npm test` fails `repo-check.test.ts` / `refusing production publish` | Netlify injects `CONTEXT=production` into `npm test`. Current `main` should ignore that inside Vitest. Redeploy this repo at a revision that includes that guard. |
 | `npm ci` cannot find workspaces | Base directory was set to `sites/one`. Unset it. |
 | Every connected site builds on every CMS commit | Missing or wrong `ignore`, or package directory not set so Netlify never reads that toml |
 | `two.majesta.net` shows One’s docs | Domain alias on `majesta-one-docs`. Remove it; create a second site. |
-| Deploy Preview looks like production | `CONTEXT` not reaching the build, or `CMS_PRODUCTION=1` set in the UI. Do not set that env var in Netlify. |
+| Deploy Preview looks like production | `CMS_PRODUCTION=1` set in the Netlify UI. Do not set that env var. |
