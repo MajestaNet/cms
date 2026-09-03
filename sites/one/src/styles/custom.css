@@ -54,6 +54,7 @@ html {
 
 :root {
   --sl-nav-height: 4.75rem;
+  --sl-mobile-toc-height: 0rem;
 }
 
 /* Starlight 0.41 does not apply --sl-font-headings. Josefin at 400 only. */
@@ -122,6 +123,7 @@ header.header {
 .mn-header-search {
   flex: 1 1 auto;
   justify-content: flex-end;
+  min-width: 0;
 }
 
 .mn-header-end {
@@ -162,9 +164,9 @@ header.header {
   color: var(--mn-ivory);
 }
 
-/* Header controls must be ivory/gold on navy — body tokens are navy-on-ivory. */
+/* Search: larger ivory control on navy. Gold stays on the lockup, not this brick. */
 header.header site-search button[data-open-modal] {
-  color: var(--mn-ivory);
+  color: color-mix(in srgb, var(--mn-ivory) 78%, transparent);
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--mn-radius);
@@ -173,32 +175,52 @@ header.header site-search button[data-open-modal] {
   width: auto;
 }
 
+header.header site-search button[data-open-modal] svg {
+  color: inherit;
+  fill: currentColor;
+}
+
 @media (min-width: 50rem) {
   header.header site-search button[data-open-modal] {
-    background: transparent;
-    border: 1px solid var(--mn-gold);
-    color: var(--mn-ivory);
-    max-width: 16rem;
-    width: auto;
+    background: color-mix(in srgb, var(--mn-ivory) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--mn-ivory) 20%, transparent);
+    color: color-mix(in srgb, var(--mn-ivory) 82%, transparent);
+    width: min(28rem, 100%);
+    max-width: 28rem;
+    min-width: 18rem;
+    height: 2.85rem;
+    padding-inline: 1rem 0.7rem;
+    font-size: 0.95rem;
     border-radius: var(--mn-radius);
   }
 
+  header.header site-search button[data-open-modal] svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
   header.header site-search button[data-open-modal]:hover {
-    border-color: var(--mn-gold);
-    color: var(--mn-gold);
-    background: transparent;
+    border-color: color-mix(in srgb, var(--mn-ivory) 40%, transparent);
+    color: var(--mn-ivory);
+    background: color-mix(in srgb, var(--mn-ivory) 10%, transparent);
   }
 }
 
 header.header site-search button[data-open-modal] kbd {
   background: transparent;
-  color: var(--mn-gold);
-  border: 1px solid color-mix(in srgb, var(--mn-gold) 45%, transparent);
+  color: color-mix(in srgb, var(--mn-ivory) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mn-ivory) 22%, transparent);
   border-radius: var(--mn-radius);
+  font-size: 0.7rem;
+}
+
+header.header site-search button[data-open-modal]:hover kbd {
+  color: color-mix(in srgb, var(--mn-ivory) 78%, transparent);
+  border-color: color-mix(in srgb, var(--mn-ivory) 36%, transparent);
 }
 
 header.header .social-icons a {
-  color: var(--mn-gold);
+  color: color-mix(in srgb, var(--mn-ivory) 78%, transparent);
 }
 
 header.header .social-icons a:hover {
@@ -437,18 +459,50 @@ site-search button[data-close-modal] {
   border-radius: var(--mn-radius);
 }
 
-mobile-starlight-toc nav {
-  background: var(--mn-ivory);
-  color: var(--mn-navy);
-  border-top: 1px solid var(--mn-hairline);
+/* Right column stays; Starlight TOC does not. */
+starlight-toc,
+mobile-starlight-toc {
+  display: none;
 }
 
-mobile-starlight-toc .toggle,
-mobile-starlight-toc .dropdown {
-  background: var(--mn-ivory);
-  color: var(--mn-navy);
-  border-radius: var(--mn-radius);
-  box-shadow: none;
+/* Chrome stays put on sidebar clicks; only the article crossfades. */
+@view-transition {
+  navigation: auto;
+}
+
+header.header {
+  view-transition-name: mn-header;
+}
+
+.sidebar-pane {
+  view-transition-name: mn-sidebar;
+}
+
+.right-sidebar-container {
+  view-transition-name: mn-aside;
+}
+
+::view-transition-old(mn-header),
+::view-transition-new(mn-header),
+::view-transition-old(mn-sidebar),
+::view-transition-new(mn-sidebar),
+::view-transition-old(mn-aside),
+::view-transition-new(mn-aside) {
+  animation: none;
+  mix-blend-mode: normal;
+  height: 100%;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.16s;
+  animation-timing-function: ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
 }
 
 @media (max-width: 49.99rem) {
