@@ -12,18 +12,21 @@ Every HTML page on a product host uses the same shell:
 
 | Piece | Rule |
 |---|---|
-| Header | Navy bar (`#1B2E46`). Gold lockup (`brand/logo-gold.svg`) ≥180px wide. Product name in gold next to the lockup (typed product noun only — never recreate the `MAJESTA.NET` wordmark). Search and GitHub on the right, ivory/gold on navy. |
+| Header | Navy bar (`#1B2E46`). Gold lockup (`brand/logo-gold.svg`) ≥180px wide. Product name in gold next to the lockup (typed product noun only — never recreate the `MAJESTA.NET` wordmark). Search and GitHub on the right. Gold is the lockup; do not gold-outline the search brick. |
+| Search | Right-aligned, larger than Starlight’s default, ivory on navy with a faint ivory hairline. Shortcut chip muted ivory if kept. Hover brightens ivory, it does not turn gold. |
 | Theme | No dark/light toggle. Force light. Header tokens are **not** body tokens: navy icons on a navy bar are a defect. |
 | Starlight tokens | Light-theme semantics: `--sl-color-white` is strongest **text** (navy), `--sl-color-black` is the **page fill** (ivory). Never set `white` to ivory to make the header work — override header controls locally. Ivory-on-ivory sidebar labels and H1s are a defect. |
 | Type | Josefin Sans for H1–H3 and the product noun; Inter for body and nested nav. Starlight does not apply `--sl-font-headings` by itself. |
 | Edges | Square corners (`border-radius: 0`). One hairline: `color-mix(in srgb, #1B2E46 12%, transparent)`. No pill search, no circular menu button. |
 | Layout | Same header on docs, 404, with or without a sidebar. Do not use Starlight’s default grid that shifts the lockup against the content column. |
+| Right column | Always reserved on doc pages. Empty for now (later screenshots/videos). Do not ship Starlight’s “On this page” TOC — it appears only on pages with headings and reflows the article. |
+| Navigation | Prefetch sidebar targets. Header, left nav, and the empty right column must not flash or jump when changing pages. |
 | Banner | Fixture/unpublished pin only. Not a second navy header. |
 | Page title | Overlay `title` is the only H1 (Starlight `PageTitle`). Included source must not bring a competing H1. |
 | Footer | “Source & contributing” → the product GitHub repo. No “Edit this page” on overlay files. Pagination titles are navy on ivory. |
 | 404 | Same header. Splash body is allowed. Do not add `cmsPage`. |
 
-One (`sites/one`) implements this via `src/components/Header.astro`, `Footer.astro`, `Head.astro`, `ThemeProvider.astro`, and `src/styles/custom.css`. Starlight light-theme tokens stay navy text / ivory fill — do not invert them for the header. Copy the finished chrome from [`sites/_template/`](./sites/_template/) (not the old inverted mapping) and change only the product noun and the source-repo URL. The three-cut plan is [CHROME.md](./CHROME.md).
+One (`sites/one`) implements this via `src/components/Header.astro`, `Footer.astro`, `Head.astro`, `ThemeProvider.astro`, `TwoColumnContent.astro`, `PageSidebar.astro`, and `src/styles/custom.css`. Starlight light-theme tokens stay navy text / ivory fill — do not invert them for the header. Copy the finished chrome from [`sites/_template/`](./sites/_template/) (not the old inverted mapping) and change only the product noun and the source-repo URL. The three-cut plan plus the nav/search/aside follow-up is [CHROME.md](./CHROME.md).
 
 ## Overlay page shape
 

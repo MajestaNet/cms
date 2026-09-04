@@ -30,6 +30,7 @@ const unpublished = source.mode !== 'pin';
 export default defineConfig({
   site: 'https://one.majesta.net',
   trailingSlash: 'never',
+  prefetch: true,
   fonts: [
     {
       name: 'Josefin Sans',
@@ -82,6 +83,7 @@ export default defineConfig({
       editLink: {
         baseUrl: 'https://github.com/MajestaNet/cms/edit/main/sites/one/',
       },
+      tableOfContents: false,
       customCss: ['./src/styles/custom.css'],
       components: {
         ThemeSelect: './src/components/ThemeSelect.astro',
@@ -90,6 +92,8 @@ export default defineConfig({
         Head: './src/components/Head.astro',
         Header: './src/components/Header.astro',
         Footer: './src/components/Footer.astro',
+        TwoColumnContent: './src/components/TwoColumnContent.astro',
+        PageSidebar: './src/components/PageSidebar.astro',
       },
       head: unpublished
         ? [{ tag: 'meta', attrs: { name: 'robots', content: 'noindex' } }]

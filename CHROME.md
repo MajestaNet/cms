@@ -76,7 +76,7 @@ Keep search on the **right**. Change the control and the modal, and unblock Page
 
 1. CSP (production is why search “doesn’t work”): add `'wasm-unsafe-eval'` to `script-src` and `worker-src 'self' blob:`. Do not add `'unsafe-eval'`. Assert those substrings in the existing Netlify toml test. Document in NETLIFY.md.
 2. Audit inline Starlight scripts under `script-src 'self'` (theme, search shortcut, sidebar persist). If they are blocked, add hashes or a narrow `'unsafe-inline'` — not a wide-open script policy.
-3. Header trigger: gold hairline rectangle on navy, ivory label, no pill, no second navy brick. Shortcut chip is optional; if kept, gold/ivory, not gray-6.
+3. Header trigger: **larger** ivory control on navy, faint ivory hairline, no pill, no gold brick (gold stays on the lockup). Shortcut chip is optional; if kept, muted ivory, not gold and not gray-6.
 4. Modal: ivory field, navy text, gold focus, radius 0, no empty 15rem min-height void. Result rows are ivory with navy type and a gold hairline, not stacked navy slabs. Magnifier and placeholder must meet contrast on that field.
 5. Verify with `make build &&` preview (Pagefind is production-only). `make dev` will still stub search — say so in `sites/one/README.md`. Do not add Pagefind-in-dev unless a later cut needs it.
 
@@ -94,6 +94,20 @@ Keep search on the **right**. Change the control and the modal, and unblock Page
 6. Copy the finished `custom.css` + header components into `sites/_template/` so Two does not re-invert tokens.
 
 **Done when:** header, sidebar, content, pagination, search, and banner share square corners and one hairline; no circular controls; desktop and ~390px mobile both look like the same product.
+
+### Follow-up — nav flash, search gold, right column
+
+Cuts 1–3 left three operator issues:
+
+| Surface | What you see | Fix |
+|---|---|---|
+| Sidebar click | Whole page reloads; article jumps because “On this page” exists only when a page has headings. | Always reserve the right column (`TwoColumnContent` override). `tableOfContents: false` + empty `PageSidebar`. Prefetch + CSS `@view-transition` so header/sidebar/aside do not fade. |
+| Search (right) | Gold rectangle + gold ⌘K next to the gold lockup. Too small, too much gold. | Larger ivory field, faint ivory hairline, muted shortcut. GitHub ivory. Gold stays on the lockup. |
+| Right column | Starlight “On this page…” | Keep the column blank for later screenshots/videos. No TOC on desktop or mobile. |
+
+**Files:** `sites/one/src/styles/custom.css`, `sites/one/astro.config.mjs`, `sites/one/src/components/TwoColumnContent.astro`, `sites/one/src/components/PageSidebar.astro`, `QUALITY.md`, `sites/_template/` copies.
+
+**Done when:** clicking Install → Connect → a family page keeps the same three-column shell; search is a large muted control; the right column is empty hairline space.
 
 ## Out of scope
 
@@ -114,6 +128,6 @@ make build
 npm run preview --workspace=@majestanet/one-docs   # http://127.0.0.1:4322/
 ```
 
-Browser: home, `/install`, `/api/families`, `/404`; desktop ~1440 and mobile ~390; open search and type `install`; open the mobile menu and read nested API links.
+Browser: home, `/install`, `/connect`, `/api/families`, `/404`; desktop ~1440 and mobile ~390; click several sidebar items and confirm the header/nav/right column do not jump; confirm there is no “On this page”; open search and type `install`; open the mobile menu and read nested API links.
 
 Contrast: navy on ivory and ivory on navy only. No ivory-on-ivory headings, no navy-on-navy nested nav.
