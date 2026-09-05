@@ -1,15 +1,15 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { fromMarkdown } from 'mdast-util-from-markdown';
 import { pageBySourceFile, type ContentMap } from './content-map.ts';
 import {
   publicPagesFromRoutes,
   rewriteMarkdownLinks,
   type LinkRewriteContext,
 } from './links.ts';
+import { parseGfmMarkdown, type MarkdownRoot } from './markdown.ts';
 import type { ResolvedSource } from './source.ts';
 
-type Root = ReturnType<typeof fromMarkdown>;
+type Root = MarkdownRoot;
 type RootContent = Root['children'][number];
 
 export interface CmsRemarkOptions {
@@ -49,7 +49,7 @@ export interface IncludedSource {
 /** Rewrite links, drop the source H1 (overlay title is the page header), demote leftover H1s. */
 export function includedSourceTree(markdown: string, ctx: LinkRewriteContext): IncludedSource {
   const rewritten = rewriteMarkdownLinks(stripYamlFrontmatter(markdown), ctx);
-  const tree = fromMarkdown(rewritten) as Root;
+  const tree = parseGfmMarkdown(rewritten);
   let title: string | undefined;
   const first = tree.children[0];
   if (first && first.type === 'heading' && first.depth === 1) {

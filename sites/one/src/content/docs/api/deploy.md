@@ -1,9 +1,9 @@
 ---
 title: Deploy API
-description: Promote customer implementation across environments.
+description: Promote customer implementation on /deploy/v1. Scope deploy.
 cmsPage: /api/deploy
 ---
 
-The Deploy family promotes a customer implementation across that customer’s environments. Image roll is a different axis — see [Upgrades](/upgrades).
+Deploy treats **customer implementation** as a releasable artifact for this customer’s installs: pack, validate, test, and apply. Call `/deploy/v1` with scope `deploy`. It does not ship product images or managed `core` internals.
 
-Curated endpoints for this family are listed on [API families](/api/families).
+Image roll is [upgrades](/upgrades) and [Ops](/api/ops). CLI: [cli](/cli). Overview: [API families](/api/families).

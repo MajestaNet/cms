@@ -116,6 +116,7 @@ export default defineConfig({
           ],
         },
         { label: 'Modules', slug: 'modules' },
+        { label: 'Objects', slug: 'objects' },
         { label: 'Customization', slug: 'customization' },
         { label: 'Upgrades', slug: 'upgrades' },
         { label: 'Security', slug: 'security' },

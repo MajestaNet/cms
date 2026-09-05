@@ -32,6 +32,8 @@ If you are publishing another product, stop and open that product’s `AGENT.md`
 ## Never publish
 
 - `docs/architecture/*-playbook*`, `*-build-plan.md`, `backlog/`, `.cursor/`, `AGENTS.md`
+- `docs/data-model.md` (contributor storage; public catalog is `docs/objects.md`)
+- `GET /client/v1/describe` as a public catalog (authenticated runtime schema)
 - Live vulnerability detail
 - Community `sdk/*/docs/*` as nav
 - `docs/local-development-mac.md` as a public install path

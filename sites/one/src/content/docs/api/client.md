@@ -1,9 +1,9 @@
 ---
 title: Client API
-description: Record CRUD. Curated list, not describe.
+description: Records, query, and related data work on /client/v1. Scope client.
 cmsPage: /api/client
 ---
 
-The Client family is data work: records, queries, and related document operations operators actually call.
+Client is data work on **this** install: records, queries, bulk, agent runs, and identity assignment. Call `/client/v1` with scope `client`. It does not create custom objects, enable packages, or promote environments.
 
-Curated endpoints for this family are listed on [API families](/api/families). This page does not paste that file a second time.
+Pin `One-API-Revision` from [revision](/api/revision). Overview: [API families](/api/families). Catalog: [objects](/objects). Connect with MCP + `one` + family HTTP; Control IDE is an optional JWT client.

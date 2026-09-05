@@ -13,6 +13,7 @@ Lead with **MCP + `one` + family HTTP**. Pin `One-API-Revision` for the image yo
 | [Install](/install) | Path A (DigitalOcean App Platform) or Path B (Compose / Helm) |
 | [Connect](/connect) | MCP, JWT, and the `one` CLI |
 | [API families](/api/families) | Client, Metadata, Deploy, Ops, Auth |
+| [Objects](/objects) | Managed object catalog — not `GET /describe` |
 | [Customization](/customization) | Custom vs managed — do not fork the product |
 
 This site tracks a product `v*` tag (the same version string as GHCR). It does not publish from `MajestaNet/one` `main`.
