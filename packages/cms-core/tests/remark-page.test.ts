@@ -44,4 +44,24 @@ describe('includedSourceTree', () => {
     expect(dump).not.toContain('http');
     expect(dump).not.toContain('AGENTS.md');
   });
+
+  it('keeps GFM tables so family endpoint lists stay tables', () => {
+    const { children } = includedSourceTree(
+      [
+        '# Client',
+        '',
+        '| Method | Path |',
+        '|---|---|',
+        '| `GET` | `/client/v1/describe` |',
+        '',
+        'See [connect](builder-connect.md).',
+        '',
+      ].join('\n'),
+      ctx,
+    );
+    expect(children.some((n) => n.type === 'table')).toBe(true);
+    const dump = JSON.stringify(children);
+    expect(dump).toContain('/connect');
+    expect(dump).toContain('/client/v1/describe');
+  });
 });

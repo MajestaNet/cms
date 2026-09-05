@@ -121,4 +121,19 @@ describe('rewriteMarkdownLinks', () => {
     expect(out).toContain('](/install)');
     expect(out).not.toContain('no-such.png');
   });
+
+  it('round-trips GFM tables and rewrites links inside cells', () => {
+    const out = rewriteMarkdownLinks(
+      [
+        '| Next | Link |',
+        '|---|---|',
+        '| Connect | [connect](builder-connect.md) |',
+        '',
+      ].join('\n'),
+      ctx(),
+    );
+    expect(out).toMatch(/\| Next\s+\| Link\s+\|/);
+    expect(out).toContain('](/connect)');
+    expect(out).not.toContain('builder-connect.md');
+  });
 });

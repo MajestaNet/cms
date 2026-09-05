@@ -1,10 +1,9 @@
 import { posix } from 'node:path';
-import { fromMarkdown } from 'mdast-util-from-markdown';
-import { toMarkdown } from 'mdast-util-to-markdown';
 import { visit } from 'unist-util-visit';
 import { isForbiddenSource } from './ignore.ts';
+import { parseGfmMarkdown, stringifyGfmMarkdown, type MarkdownRoot } from './markdown.ts';
 
-type Root = ReturnType<typeof fromMarkdown>;
+type Root = MarkdownRoot;
 
 export interface LinkRewriteContext {
   fromFile: string;
@@ -148,7 +147,7 @@ function applyDecision(
 }
 
 export function rewriteMarkdownLinks(markdown: string, ctx: LinkRewriteContext): string {
-  const tree = fromMarkdown(markdown) as Root;
+  const tree = parseGfmMarkdown(markdown);
   visit(tree, (node, index, parent) => {
     if (!parent || typeof index !== 'number') return;
     if (node.type === 'link' || node.type === 'image' || node.type === 'definition') {
@@ -170,9 +169,9 @@ export function rewriteMarkdownLinks(markdown: string, ctx: LinkRewriteContext):
       node.url = result.url ?? node.url;
     }
   });
-  return toMarkdown(tree);
+  return stringifyGfmMarkdown(tree);
 }
 
 export function parseMarkdown(markdown: string): Root {
-  return fromMarkdown(markdown);
+  return parseGfmMarkdown(markdown);
 }
