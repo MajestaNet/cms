@@ -1,9 +1,9 @@
 ---
 title: Auth API
-description: JWT, install claim, and identity.
+description: JWT, install claim, and identity on /auth/v1.
 cmsPage: /api/auth
 ---
 
-Auth issues JWTs for **this** install and handles install-claim / identity routes. Tokens from one install are not valid on another.
+Auth mints, refreshes, and revokes Majesta One JWTs for **this** install, and handles install claim. Call `/auth/v1`. It is not a data family — after you have a token, call Client, Metadata, Deploy, or Ops with the matching scope. Tokens from one install are not valid on another.
 
-Curated endpoints for this family are listed on [API families](/api/families).
+Connect with MCP + `one` + family HTTP: [connect](/connect). Overview: [API families](/api/families).

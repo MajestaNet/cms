@@ -25,13 +25,14 @@ one.majesta.net
 │   ├── /ops
 │   └── /auth
 ├── /modules               Managed packages
+├── /objects               Managed object catalog (not GET /describe)
 ├── /customization         custom vs managed; never fork product
 ├── /upgrades              Image roll vs Deploy promote
 ├── /security              AuthZ posture, SECURITY.md pointer
 └── /releases              GitHub Release + digest pin
 ```
 
-**Keep on GitHub only** (footer “Source & contributing”, do not nav): agent playbooks, `*-build-plan.md`, `backlog/BP-*`, Control IDE internals, community `sdk/*/docs/*`, contributor DX (`local-development-mac.md`).
+**Keep on GitHub only** (footer “Source & contributing”, do not nav): agent playbooks, `*-build-plan.md`, `backlog/BP-*`, Control IDE internals, community `sdk/*/docs/*`, contributor DX (`local-development-mac.md`), contributor `docs/data-model.md`.
 
 Control IDE is an optional JWT client, not the product shell. Lead with MCP + `one` + family HTTP.
 
@@ -63,7 +64,13 @@ First matching prefix wins; a file may map to more than one page (unique `path` 
 | `docs/self-host.md`, `deploy/docker-compose.yml`, `deploy/helm/**`, `deploy/digitalocean/**` | `/install` |
 | `docs/builder-connect.md`, `docs/customer-connect.md` | `/connect` |
 | `docs/customer-repo.md`, `docs/customer-developer-workflow.md` | `/cli` |
-| `docs/api-families.md` | `/api/families` |
+| `docs/api-families.md` | `/api/families` only (overview) |
+| `docs/api/client.md` | `/api/client` |
+| `docs/api/metadata.md` | `/api/metadata` |
+| `docs/api/deploy.md` | `/api/deploy` |
+| `docs/api/ops.md` | `/api/ops` |
+| `docs/api/auth.md` | `/api/auth` |
+| `docs/objects.md` | `/objects` |
 | `docs/adr/025-api-revision-versioning.md` | `/api/revision` |
 | `docs/customer-customizations.md` | `/customization` |
 | `docs/product-upgrades.md`, `docs/ops.md` | `/upgrades` |
@@ -71,10 +78,10 @@ First matching prefix wins; a file may map to more than one page (unique `path` 
 | `docs/security.md`, `SECURITY.md` | `/security` |
 | `docs/modules/**` | `/modules` |
 | `README.md`, `docs/glossary.md` | `/` |
-| `docs/api/**` | matching `/api/...` page |
+| `docs/api/**` | matching `/api/...` page (`docs/api/README.md` is not a public route) |
 
-Several family pages share `docs/api-families.md` today. Prefer splitting to `docs/api/*.md` **in the source repo** when a family page is too long — overlay should not paste the same file five times.
+Family pages include `docs/api/{client,metadata,deploy,ops,auth}.md`. Do not paste `docs/api-families.md` onto those five routes. Do not map `docs/data-model.md` or `GET /describe`.
 
 ## Overlay vs source voice
 
-Source files such as `docs/api-families.md` still read like a build plan (BP IDs, playbook asides). The overlay must be the **customer cut**. Off-allowlist links in source markdown must be rewritten or dropped at build time so playbooks do not 404-or-leak onto the subdomain.
+Family HTTP pages in `docs/api/` are already a customer cut (path, method, scope, does / does not). Overlay leads introduce those files; they do not duplicate the endpoint tables. Off-allowlist links in source markdown must be rewritten or dropped at build time so playbooks do not 404-or-leak onto the subdomain.

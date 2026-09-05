@@ -16,30 +16,36 @@ pages:
     sources: [docs/customer-repo.md, docs/customer-developer-workflow.md]
   /api/families:
     sources: [docs/api-families.md]
-    note: Customer cut — drop agent-playbook asides.
+    include: true
+    note: Overview only. Do not paste this file onto the five family routes.
   /api/revision:
     sources: [docs/adr/025-api-revision-versioning.md]
     note: Pin One-API-Revision; min/current. Not a parallel site tree.
   /api/client:
-    sources: [docs/api-families.md]
-    include: false
-    note: Overlay only until the source repo splits docs/api/client.md. Do not paste api-families five times.
+    sources: [docs/api/client.md]
+    include: true
   /api/metadata:
-    sources: [docs/api-families.md]
-    include: false
+    sources: [docs/api/metadata.md]
+    include: true
   /api/deploy:
-    sources: [docs/api-families.md]
-    include: false
+    sources: [docs/api/deploy.md]
+    include: true
   /api/ops:
-    sources: [docs/api-families.md]
-    include: false
+    sources: [docs/api/ops.md]
+    include: true
   /api/auth:
-    sources: [docs/api-families.md]
-    include: false
+    sources: [docs/api/auth.md]
+    include: true
   /modules:
     sources: [docs/modules/README.md, docs/modules/*.md]
+    include: true
+  /objects:
+    sources: [docs/objects.md]
+    include: true
+    note: Static managed-object catalog. Not GET /describe. Custom objects stay on the install.
   /customization:
     sources: [docs/customer-customizations.md]
+    include: true
   /upgrades:
     sources: [docs/product-upgrades.md, docs/ops.md]
     note: Customer cut — image roll vs Deploy promote.
