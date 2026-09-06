@@ -20,13 +20,13 @@ Every HTML page on a product host uses the same shell:
 | Edges | Square corners (`border-radius: 0`). One hairline: `color-mix(in srgb, #1B2E46 12%, transparent)`. No pill search, no circular menu button. |
 | Layout | Same header on docs, 404, with or without a sidebar. Do not use Starlight’s default grid that shifts the lockup against the content column. |
 | Right column | Always reserved on doc pages. Empty for now (later screenshots/videos). Do not ship Starlight’s “On this page” TOC — it appears only on pages with headings and reflows the article. |
-| Navigation | Prefetch sidebar targets. Header, left nav, and the empty right column must not flash or jump when changing pages. |
+| Navigation | Prefetch sidebar targets. Use `ClientRouter` (`fallback="swap"`) in `ThemeProvider`. Header persists; do not enable MPA `@view-transition { navigation: auto }` or a root crossfade — that remounts the menu on heavy included pages. Header, left nav, and the empty right column must not flash or jump when changing pages. |
 | Banner | Fixture/unpublished pin only. Not a second navy header. |
 | Page title | Overlay `title` is the only H1 (Starlight `PageTitle`). Included source must not bring a competing H1. |
 | Footer | “Source & contributing” → the product GitHub repo. No “Edit this page” on overlay files. Pagination titles are navy on ivory. |
 | 404 | Same header. Splash body is allowed. Do not add `cmsPage`. |
 
-One (`sites/one`) implements this via `src/components/Header.astro`, `Footer.astro`, `Head.astro`, `ThemeProvider.astro`, `TwoColumnContent.astro`, `PageSidebar.astro`, and `src/styles/custom.css`. Starlight light-theme tokens stay navy text / ivory fill — do not invert them for the header. Copy the finished chrome from [`sites/_template/`](./sites/_template/) (not the old inverted mapping) and change only the product noun and the source-repo URL. The three-cut plan plus the nav/search/aside follow-up is [CHROME.md](./CHROME.md).
+One (`sites/one`) implements this via `src/components/Header.astro`, `Footer.astro`, `Head.astro`, `ThemeProvider.astro`, `TwoColumnContent.astro`, `PageSidebar.astro`, and `src/styles/custom.css`. Starlight light-theme tokens stay navy text / ivory fill — do not invert them for the header. Copy the finished chrome from [`sites/_template/`](./sites/_template/) (not the old inverted mapping) and change only the product noun and the source-repo URL. Overlay ingest must not delete those overrides or re-enable TOC / MPA morph — `make docs-check` fails. The three-cut plan plus the nav/search/aside follow-up is [CHROME.md](./CHROME.md).
 
 ## Overlay page shape
 
@@ -107,3 +107,4 @@ If included markdown is still full of BP IDs and playbook asides, rewrite the ov
 - Missing `title` or `description`
 - `TODO` / `FIXME` in overlay body
 - Overlay links that are not a map route or an absolute URL
+- Starlight chrome dropped or “simplified”: missing `ClientRouter` / `prefetch` / `tableOfContents: false`, missing `TwoColumnContent` / `PageSidebar` / `Header` persist, MPA `@view-transition { navigation: auto }`, or a root view-transition crossfade

@@ -6,7 +6,7 @@ You work **only** in the Majesta CMS aggregator repository, on **`sites/one`**.
 
 **Source repo:** `MajestaNet/one` (not `ide`).
 
-**May edit:** `sites/one/**` (overlay, sidebar, content map, `pin` on `kind=tag` only).
+**May edit:** `sites/one/**` (overlay, sidebar, content map, `pin` on `kind=tag` only). Do not drop chrome (`ClientRouter`, reserved right column, TOC off).
 
 **Must not:** merge PRs; deploy Netlify production; use `NETLIFY_*`; edit `MajestaNet/one` (or any other product); touch `sites/` other than `one`; set `pin` to `main`.
 

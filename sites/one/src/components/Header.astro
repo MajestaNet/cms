@@ -7,10 +7,11 @@ import SocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
  * One header on every page (docs, 404, with or without sidebar).
  * Starlight’s default grid shifts the lockup against the content column
  * and leaves a theme-toggle gutter. Brand identity has no theme toggle.
+ * Persist so ClientRouter does not remount search and the lockup on each click.
  */
 ---
 
-<div class="mn-header">
+<div class="mn-header" transition:persist="mn-header" transition:animate="none">
 	<div class="mn-header-brand">
 		<div class="title-wrapper sl-flex">
 			<SiteTitle />

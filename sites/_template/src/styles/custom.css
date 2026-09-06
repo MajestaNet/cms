@@ -465,9 +465,11 @@ mobile-starlight-toc {
   display: none;
 }
 
-/* Chrome stays put on sidebar clicks; only the article crossfades. */
+/* Chrome stays put. ClientRouter swaps the article; do not MPA-morph the shell.
+   Cross-document view transitions plus a root crossfade look like a full reload
+   once included-source pages get large. */
 @view-transition {
-  navigation: auto;
+  navigation: none;
 }
 
 header.header {
@@ -482,6 +484,8 @@ header.header {
   view-transition-name: mn-aside;
 }
 
+::view-transition-old(root),
+::view-transition-new(root),
 ::view-transition-old(mn-header),
 ::view-transition-new(mn-header),
 ::view-transition-old(mn-sidebar),
@@ -491,18 +495,6 @@ header.header {
   animation: none;
   mix-blend-mode: normal;
   height: 100%;
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 0.16s;
-  animation-timing-function: ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  @view-transition {
-    navigation: none;
-  }
 }
 
 @media (max-width: 49.99rem) {

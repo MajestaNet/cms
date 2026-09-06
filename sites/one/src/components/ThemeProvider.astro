@@ -1,7 +1,37 @@
 ---
+import { ClientRouter } from 'astro:transitions';
+
 /**
  * Brand identity is navy + ivory with no dark/light toggle.
- * Starlight emits data-theme="dark" and would otherwise inline a
- * prefers-color-scheme script. Head.astro loads /theme-light.js first.
+ * Starlight emits data-theme="dark" on <html>; Head.astro loads /theme-light.js first.
+ * ClientRouter keeps header/sidebar from doing a full MPA remount on each nav click.
+ * Do not remove this — docs-check fails without it (QUALITY.md chrome).
  */
 ---
+
+<ClientRouter fallback="swap" />
+<script>
+	const forceLight = () => {
+		document.documentElement.dataset.theme = 'light';
+		try {
+			localStorage.setItem('starlight-theme', 'light');
+		} catch {
+			/* ignore */
+		}
+	};
+
+	const closeMobileMenu = () => {
+		document.body.removeAttribute('data-mobile-menu-expanded');
+		document.querySelectorAll('.main-frame, .sl-skip-link').forEach((el) => {
+			el.removeAttribute('inert');
+		});
+		const menu = document.querySelector('starlight-menu-button');
+		if (menu) menu.setAttribute('aria-expanded', 'false');
+	};
+
+	forceLight();
+	document.addEventListener('astro:after-swap', () => {
+		forceLight();
+		closeMobileMenu();
+	});
+</script>
