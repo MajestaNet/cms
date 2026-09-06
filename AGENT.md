@@ -21,7 +21,7 @@ The aggregator is a **publisher**. Site agents are the **writers**. CMS CI must 
 1. Read the notify payload (`source`, `ref`, `sha`, `paths[]`, `kind`: `merge` \| `tag`). Skip if `skip: true`.
 2. Resolve `source` in [sites/catalog.yaml](./sites/catalog.yaml). If the repo is not registered, stop and say so — do not invent a site.
 3. Read **that** site’s `AGENT.md`, `content-map.yaml`, and `README.md`, plus [QUALITY.md](./QUALITY.md). Follow them. Do not apply another product’s pin rule or tone.
-4. Fetch the source repo at `sha` (public clone). Review the mapped sources. Update **overlay** so operators see what changed.
+4. Fetch the source repo at `sha` (public clone). Review the mapped sources. Update **overlay** so operators see what changed. Do not restyle or “simplify” Starlight chrome (`ClientRouter`, reserved right column, TOC off, view-transition names). Overlay-only jobs that drop those fail `docs-check`.
 5. Open a **draft** PR on this repo labeled `cms-update`. Touch only `sites/<id>/` (and catalog only if the task is registering a site). Do not merge. Do not deploy.
 
 Cursor Automation (dashboard) should launch [`.cursor/agents/cms-router.md`](./.cursor/agents/cms-router.md). A known One-only job may launch [`.cursor/agents/cms-one.md`](./.cursor/agents/cms-one.md) instead. Fallback: paste the prompt at the bottom of this file into a cloud agent.
@@ -41,7 +41,7 @@ Skip (no PR) when:
 - [ ] Every mapped page from `paths[]` is addressed or explicitly unchanged with a reason
 - [ ] Only that site’s `sites/<id>/` overlay (and pin if the site playbook says so) changed
 - [ ] Customer tone; no agent-playbook voice
-- [ ] Overlay matches [QUALITY.md](./QUALITY.md) (`make docs-check` green: titles, cmsPage, no dead overlay links)
+- [ ] Overlay matches [QUALITY.md](./QUALITY.md) (`make docs-check` green: titles, cmsPage, no dead overlay links, chrome contract)
 - [ ] PR is **draft**, labeled `cms-update`
 - [ ] No merge, no Netlify token, no product-repo code edits
 

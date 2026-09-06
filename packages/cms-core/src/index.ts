@@ -57,6 +57,12 @@ export {
 } from './remark-cms-sources.ts';
 export { checkAllSites, type SiteCheck } from './check.ts';
 export {
+  checkSiteChrome,
+  assertSiteChrome,
+  formatChromeIssues,
+  type ChromeCheckIssue,
+} from './chrome.ts';
+export {
   parseIgnorePaths,
   requiredIgnorePaths,
   checkSiteNetlifyToml,

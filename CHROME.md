@@ -101,13 +101,13 @@ Cuts 1–3 left three operator issues:
 
 | Surface | What you see | Fix |
 |---|---|---|
-| Sidebar click | Whole page reloads; article jumps because “On this page” exists only when a page has headings. | Always reserve the right column (`TwoColumnContent` override). `tableOfContents: false` + empty `PageSidebar`. Prefetch + CSS `@view-transition` so header/sidebar/aside do not fade. |
+| Sidebar click | Whole page reloads; article jumps because “On this page” exists only when a page has headings. A 0.16s MPA root crossfade looks like a full remount once included-source pages get large (family tables, objects). | Always reserve the right column (`TwoColumnContent` override). `tableOfContents: false` + empty `PageSidebar`. `ClientRouter fallback="swap"` in `ThemeProvider`. Persist the header. Prefetch. `@view-transition { navigation: none }` and `animation: none` on root + named chrome. Do **not** use `navigation: auto`. `make docs-check` fails if an overlay job drops this. |
 | Search (right) | Gold rectangle + gold ⌘K next to the gold lockup. Too small, too much gold. | Larger ivory field, faint ivory hairline, muted shortcut. GitHub ivory. Gold stays on the lockup. |
 | Right column | Starlight “On this page…” | Keep the column blank for later screenshots/videos. No TOC on desktop or mobile. |
 
-**Files:** `sites/one/src/styles/custom.css`, `sites/one/astro.config.mjs`, `sites/one/src/components/TwoColumnContent.astro`, `sites/one/src/components/PageSidebar.astro`, `QUALITY.md`, `sites/_template/` copies.
+**Files:** `sites/one/src/styles/custom.css`, `sites/one/astro.config.mjs`, `sites/one/src/components/TwoColumnContent.astro`, `sites/one/src/components/PageSidebar.astro`, `sites/one/src/components/ThemeProvider.astro`, `sites/one/src/components/Header.astro`, `packages/cms-core/src/chrome.ts`, `QUALITY.md`, `sites/_template/` copies.
 
-**Done when:** clicking Install → Connect → a family page keeps the same three-column shell; search is a large muted control; the right column is empty hairline space.
+**Done when:** clicking Install → Connect → a family page keeps the same three-column shell with no menu morph; search is a large muted control; the right column is empty hairline space.
 
 ## Out of scope
 

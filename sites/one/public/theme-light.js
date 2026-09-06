@@ -4,3 +4,6 @@ try {
 } catch {
   /* ignore */
 }
+document.addEventListener('astro:after-swap', () => {
+  document.documentElement.dataset.theme = 'light';
+});
