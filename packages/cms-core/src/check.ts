@@ -3,6 +3,7 @@ import { readCatalog } from './catalog.ts';
 import { readContentMap, checkContentMap } from './content-map.ts';
 import { checkOverlayPages, formatOverlayIssues } from './overlay.ts';
 import { checkCatalogNetlify } from './netlify.ts';
+import { assertSiteChrome } from './chrome.ts';
 import { resolveSource, isProductionPublish, type ResolvedSource } from './source.ts';
 
 export interface SiteCheck {
@@ -25,6 +26,7 @@ export async function checkAllSites(repoRoot: string): Promise<SiteCheck[]> {
     if (overlay.issues.length > 0) {
       throw new Error(`overlay quality (${site.id}):\n${formatOverlayIssues(overlay.issues)}`);
     }
+    assertSiteChrome(siteDir, site.id);
     results.push({
       id: site.id,
       mode: source.mode,
