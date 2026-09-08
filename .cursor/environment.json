@@ -1,0 +1,17 @@
+{
+  "name": "Majesta CMS",
+  "install": "npm ci",
+  "terminals": [
+    {
+      "name": "one-docs-dev",
+      "command": "npm run dev",
+      "description": "Astro Starlight dev server for sites/one (@majestanet/one-docs) on http://127.0.0.1:4322/. Uses fixture source while sites/one/pin is unset."
+    }
+  ],
+  "ports": [
+    {
+      "name": "one-docs dev server",
+      "port": 4322
+    }
+  ]
+}
