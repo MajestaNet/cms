@@ -17,5 +17,5 @@ Lead with **MCP + `one` + family HTTP**. Pin `One-API-Revision` for the image yo
 | [Customization](/customization) | Custom vs managed — do not fork the product |
 | [Control IDE](/control-ide) | Optional desktop JWT client — not the product shell |
 
-This site tracks a product `v*` tag (the same version string as GHCR). It does not publish from `MajestaNet/one` `main`.
+These pages match [MajestaNet/one@c85b998](https://github.com/MajestaNet/one/commit/c85b998cfe11051ef6ac52d7d438d2f3bed7eed6) (23 November 2026). The version constant in that commit is **0.1.0** ([`internal/version/version.go`](https://github.com/MajestaNet/one/blob/c85b998cfe11051ef6ac52d7d438d2f3bed7eed6/internal/version/version.go)). GitHub has no Release and no `v*` tag yet, so this host is pinned to that commit. The next `v*` tag replaces it. An install still pins the image digest and `One-API-Revision`; it does not read this docs pin as the API revision.
 

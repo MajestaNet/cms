@@ -18,7 +18,7 @@ Profiles are `chat` and `home-action` only. The phone and watch do not submit a 
 - The phone on the same Wi-Fi as the Mac for the first enrollment
 - Tailscale on the Mac if the phone should keep working away from that Wi-Fi
 
-The apps are [MajestaNet/two-mobile](https://github.com/MajestaNet/two-mobile), Apache-2.0, the same license as Majesta Two.
+The apps are [MajestaNet/two-mobile](https://github.com/MajestaNet/two-mobile) at [fba186c](https://github.com/MajestaNet/two-mobile/commit/fba186c37a6f0b74f9d08cffa8d5d2b550a9e51a) (19 November 2026), Apache-2.0, the same license as Majesta Two. Majesta Two on the Mac is [1acb47c](https://github.com/MajestaNet/two/commit/1acb47c3d4492a4f144bdd21cfc485a2d3c4e358), package version **0.1.0**.
 
 ## Build the apps
 

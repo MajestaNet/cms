@@ -6,7 +6,7 @@ Majesta CMS is the **public-docs aggregator** for Majesta Net products: overlay,
 
 It is **not** Majesta One, Majesta Two, or the company website. Those stay in `MajestaNet/one`, `MajestaNet/two`, and `MajestaNet/webpage`. Product images must never contain this tree.
 
-**Status:** Phases 1–2 are scaffolded. `make docs-check` and `make build` must stay green. Pin is `unset`; production publish must fail closed. Do not default it to `main`.
+**Status:** Phases 1–2 are scaffolded. `make docs-check` and `make build` must stay green. One’s pin is a commit until the first `v*` tag. Two’s pin is a commit SHA. Do not write `main` into either pin file.
 
 ## Read first
 

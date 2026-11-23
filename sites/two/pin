@@ -1,4 +1,4 @@
 # Production pin for two.majesta.net.
-# A commit SHA of MajestaNet/two (the published revision of main).
-# The word main is rejected. Unset means not published yet.
-unset
+# Commit of MajestaNet/two main. pyproject.toml version is 0.1.0.
+# The word main is rejected.
+1acb47c3d4492a4f144bdd21cfc485a2d3c4e358

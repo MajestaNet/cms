@@ -16,4 +16,6 @@ The operator window starts the control plane. The iPhone and Apple Watch are how
 | [Devices](/devices) | Climate, television, vacuum, and ESPHome — off until you bind them |
 | [Security](/security) | What must stay on the private network |
 
-OpenRouter is an explicit sign-in on the Model page. It is not the default. This site does not publish from an unset pin.
+OpenRouter is an explicit sign-in on the Model page. It is not the default.
+
+These pages match [MajestaNet/two@1acb47c](https://github.com/MajestaNet/two/commit/1acb47c3d4492a4f144bdd21cfc485a2d3c4e358) (19 November 2026). The package version in that commit is **0.1.0** ([`pyproject.toml`](https://github.com/MajestaNet/two/blob/1acb47c3d4492a4f144bdd21cfc485a2d3c4e358/pyproject.toml)). The iPhone and Apple Watch apps match [MajestaNet/two-mobile@fba186c](https://github.com/MajestaNet/two-mobile/commit/fba186c37a6f0b74f9d08cffa8d5d2b550a9e51a).

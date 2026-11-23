@@ -101,11 +101,11 @@ Under **Build & deploy → Continuous deployment → Branches and deploy context
 - **Deploy Previews**: on for pull requests against `main`.
 - Branch deploys: optional; not used as product DNS.
 
-On a CMS PR that touches One’s inputs, Netlify should run a **Deploy Preview** for `majesta-one-docs` only. `CONTEXT` is not `production`, so the build uses [`fixtures/one/`](./fixtures/one/) and the site is `noindex`. That is expected while `pin` is `unset`.
+On a CMS PR that touches One’s inputs, Netlify should run a **Deploy Preview** for `majesta-one-docs` only. With a pin set, that build fetches the pinned commit. While a pin is `unset`, the build uses fixtures and sends `noindex`.
 
 ### 1.5 Production while `pin` is `unset`
 
-`sites/one/pin` is currently `unset`. There is no `v*` tag on One yet. The aggregator must not fetch `MajestaNet/one` `main` as a stand-in.
+`sites/one/pin` is commit `c85b998cfe11051ef6ac52d7d438d2f3bed7eed6` (version constant `0.1.0`). There is still no `v*` tag. Do not replace that SHA with the word `main`. `sites/two/pin` is commit `1acb47c3d4492a4f144bdd21cfc485a2d3c4e358` (package `0.1.0`).
 
 Netlify’s **first deploy after you connect the repo is production context** (`CONTEXT=production`), even though it only lives at `*.netlify.app` until you attach a custom domain. People often call that a “preview.” It is not a Deploy Preview.
 
@@ -115,9 +115,9 @@ Netlify’s **first deploy after you connect the repo is production context** (`
 | `https://one.majesta.net` | **Fail closed** — will not fetch `main` |
 | Deploy Preview / branch (`CONTEXT` ≠ `production`) | Fixture build + `noindex` |
 
-Do **not** attach `one.majesta.net` until a human sets `pin` to a `v*` tag. Attaching it first makes the next production deploy fail with `refusing production publish`.
+Attach `one.majesta.net` only after a production deploy of this pin succeeds. An unset pin on that hostname still fails with `refusing production publish`.
 
-`npm test` runs inside that production context. Tests ignore Netlify `CONTEXT` unless `CMS_PRODUCTION=1`, so they keep asserting fixture mode while pin is unset.
+`npm test` runs inside that production context. Tests ignore Netlify `CONTEXT` unless `CMS_PRODUCTION=1`. A set pin is fetched either way. An unset pin stays on fixtures inside Vitest.
 
 When the first `v*` pin lands and `make build` is green locally with `CMS_PRODUCTION=1`, merge, wait for a successful production deploy, **then** point DNS at it.
 
@@ -232,8 +232,8 @@ You can add a third and fourth site the same way. The limit is “one Netlify si
 - [ ] Netlify GitHub App can read `MajestaNet/cms` (not the product repos)
 - [ ] Site name `majesta-one-docs`, package directory `sites/one`, **base directory unset**
 - [ ] Deploy Previews on; Functions / Identity / Forms off
-- [ ] Do not attach `one.majesta.net` until `sites/one/pin` is a `v*` tag (unset pin fail-closes on that hostname)
-- [ ] First production deploy at `*.netlify.app` is fixture + `noindex` while pin is unset — that is expected
+- [ ] Attach `one.majesta.net` after a production deploy of `sites/one/pin` is green (today that pin is a commit, not a `v*` tag)
+- [ ] An unset pin on `*.majesta.net` still fail-closes. Do not clear the pin to make a deploy pass.
 - [ ] First production deploy green on the custom domain after that pin merge
 - [ ] `one.majesta.net` CNAME (or Netlify DNS) points at **this** site only
 - [ ] Apex `majesta.net` still the webpage site

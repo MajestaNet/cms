@@ -26,26 +26,33 @@ describe('repo content maps', () => {
     }
   });
 
-  it('checks One against fixtures while pin is unset', async () => {
+  it('checks both sites at their GitHub pins', async () => {
     const results = await checkAllSites(repoRoot);
     expect(results).toHaveLength(2);
     expect(results.map((r) => r.id)).toEqual(['one', 'two']);
-    expect(results.every((r) => r.mode === 'fixture' && r.pin === 'unset')).toBe(true);
+    expect(results.map((r) => r.mode)).toEqual(['pin', 'pin']);
+    expect(results.map((r) => r.pin)).toEqual([
+      'c85b998cfe11051ef6ac52d7d438d2f3bed7eed6',
+      '1acb47c3d4492a4f144bdd21cfc485a2d3c4e358',
+    ]);
     expect(results[0].pages['/install']).toEqual(['docs/self-host.md']);
-    expect(results[0].pages['/modules']).toEqual(['docs/modules/README.md', 'docs/modules/core.md']);
+    expect(results[0].pages['/modules']).toContain('docs/modules/README.md');
+    expect(results[0].pages['/modules']).toContain('docs/modules/core.md');
+    expect(results[0].pages['/modules']!.length).toBeGreaterThan(2);
   });
 
-  it('still uses fixtures when Netlify injects CONTEXT=production into npm test', async () => {
+  it('keeps the pinned revision when Netlify injects CONTEXT=production into npm test', async () => {
     process.env.CONTEXT = 'production';
     process.env.URL = 'https://majesta-one-docs.netlify.app';
     const results = await checkAllSites(repoRoot);
-    expect(results[0].mode).toBe('fixture');
+    expect(results[0].mode).toBe('pin');
+    expect(results[0].pin).toBe('c85b998cfe11051ef6ac52d7d438d2f3bed7eed6');
   });
 
-  it('refuses production publish while pin is unset', async () => {
+  it('resolves One for a production publish at the pinned commit', async () => {
     process.env.CMS_PRODUCTION = '1';
-    await expect(resolveSource({ repoRoot, siteId: 'one' })).rejects.toThrow(
-      /refusing production publish/,
-    );
+    const source = await resolveSource({ repoRoot, siteId: 'one' });
+    expect(source.mode).toBe('pin');
+    expect(source.blobRef).toBe('c85b998cfe11051ef6ac52d7d438d2f3bed7eed6');
   });
 });

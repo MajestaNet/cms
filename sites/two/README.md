@@ -2,7 +2,7 @@
 
 Customer-facing docs for the Majesta Two local control plane. Source markdown lives in the public [`MajestaNet/two`](https://github.com/MajestaNet/two) repo. The iPhone and Apple Watch apps live in [`MajestaNet/two-mobile`](https://github.com/MajestaNet/two-mobile). This directory is overlay + pin + Starlight (`@majestanet/two-docs`). Netlify: [netlify.toml](./netlify.toml). Overlay pages: `src/content/docs/`.
 
-**Pin rule:** production follows a **commit SHA** of `MajestaNet/two` (the published revision of `main`), or a `v*` tag if one is cut. The pin file must not contain the word `main`. A first publish is a human setting that SHA. While `pin` is `unset`, production on `two.majesta.net` fails closed.
+**Pin rule:** production follows a **commit SHA** of `MajestaNet/two` (the published revision of `main`), or a `v*` tag if one is cut. The pin file must not contain the word `main`. Current pin: `1acb47c3d4492a4f144bdd21cfc485a2d3c4e358` (package `0.1.0`).
 
 **Writer:** [AGENT.md](./AGENT.md) — do not use One’s playbook here.
 

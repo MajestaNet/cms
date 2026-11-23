@@ -19,7 +19,7 @@ If you are publishing another product, stop and open that product’s `AGENT.md`
 | `tag` matching `v*` | Set `pin` to that tag (same string as GHCR) | After human merge, production can move. |
 | anything else | No pin move | Ask; do not guess. |
 
-`pin` is currently `unset`. There is no `v*` tag on One yet. Do not write `main` into `pin`. Do not fetch trunk as a stand-in for production.
+`pin` is `c85b998cfe11051ef6ac52d7d438d2f3bed7eed6` (source version constant `0.1.0`). There is still no `v*` tag. Do not write `main` into `pin`. On `kind=tag` matching `v*`, replace this SHA with that tag.
 
 ## Tone
 

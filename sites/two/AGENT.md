@@ -23,7 +23,7 @@ Two has no GHCR version string. Production follows a **commit SHA** of `MajestaN
 | `tag` matching `v*` | Set `pin` to that tag | After human merge, production can move. |
 | anything else | No pin move | Ask; do not guess. |
 
-`pin` is currently `unset`. Do not write `main` into `pin`. Do not fetch trunk as a stand-in for production.
+`pin` is `1acb47c3d4492a4f144bdd21cfc485a2d3c4e358` (`pyproject.toml` version `0.1.0`). Do not write `main` into `pin`. A later `merge` on `main` sets `pin` to that payload SHA.
 
 ## Tone
 
