@@ -9,6 +9,15 @@ export const collections = {
     schema: docsSchema({
       extend: z.object({
         cmsPage: z.string().optional(),
+        cmsFigures: z
+          .array(
+            z.object({
+              src: z.string(),
+              alt: z.string(),
+              caption: z.string(),
+            }),
+          )
+          .optional(),
       }),
     }),
   }),

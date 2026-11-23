@@ -29,7 +29,8 @@ one.majesta.net
 ├── /customization         custom vs managed; never fork product
 ├── /upgrades              Image roll vs Deploy promote
 ├── /security              AuthZ posture, SECURITY.md pointer
-└── /releases              GitHub Release + digest pin
+├── /releases              GitHub Release + digest pin
+└── /control-ide           Optional desktop JWT client (screenshots of the window)
 ```
 
 **Keep on GitHub only** (footer “Source & contributing”, do not nav): agent playbooks, `*-build-plan.md`, `backlog/BP-*`, Control IDE internals, community `sdk/*/docs/*`, contributor DX (`local-development-mac.md`), contributor `docs/data-model.md`.
@@ -76,6 +77,7 @@ First matching prefix wins; a file may map to more than one page (unique `path` 
 | `docs/product-upgrades.md`, `docs/ops.md` | `/upgrades` |
 | `docs/release-cicd.md` | `/releases` |
 | `docs/security.md`, `SECURITY.md` | `/security` |
+| `docs/customer-ide-ux.md`, `tools/control-ide/**` | `/control-ide` |
 | `docs/modules/**` | `/modules` |
 | `README.md`, `docs/glossary.md` | `/` |
 | `docs/api/**` | matching `/api/...` page (`docs/api/README.md` is not a public route) |

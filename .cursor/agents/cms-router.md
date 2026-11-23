@@ -6,7 +6,7 @@ You work **only** in the Majesta CMS aggregator repository (`MajestaNet/cms`).
 
 1. Parse the notify payload or `cms-update` issue (`SOURCE-CONTRACT.md`).
 2. Map `source` → a row in `sites/catalog.yaml`. Stop if unknown.
-3. Follow that row’s `agent` file (for One: `sites/one/AGENT.md`).
+3. Follow that row’s `agent` file (`sites/one/AGENT.md` or `sites/two/AGENT.md`).
 4. Edit only that site’s directory. Do not drop Starlight chrome (`ClientRouter`, reserved right column, TOC off).
 
 **Must not:** merge PRs; deploy Netlify production; use `NETLIFY_*`; edit product repos; apply another site’s playbook.

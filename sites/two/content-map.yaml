@@ -1,0 +1,40 @@
+# Allowlist for two.majesta.net. Paths are relative to the MajestaNet/two pin.
+# The Starlight build includes these files only when include is not false.
+# Fail docs-check if a sources path is missing at the pin.
+# If pin is unset, do not fetch main as a substitute.
+# The iPhone and Apple Watch apps live in MajestaNet/two-mobile. That repo is
+# not a second pin. /phone is the customer cut of the phone path.
+
+pages:
+  /:
+    sources: [README.md]
+    include: false
+    note: Short product overview. Do not dump the full README.
+  /run:
+    sources: [docs/local.md]
+    include: false
+    note: Mac path — window, model, chat, CLI. Phone steps live on /phone.
+  /phone:
+    sources: [docs/local.md, docs/watch-client.md]
+    include: false
+    note: Customer cut of enrollment and push-to-talk. Do not paste the Swift contract.
+  /edge:
+    sources: [docs/remote-access.md]
+    include: false
+    note: Private addresses only. API stays on loopback.
+  /devices:
+    sources: [docs/setup.md, docs/adapters.md]
+    include: false
+    note: Climate, TV, vacuum, ESPHome. Off until a local binding is enabled.
+  /console:
+    sources: [docs/channels.md]
+    include: false
+    note: Operator window and CLI are clients of the one control API.
+  /operations:
+    sources: [docs/operations.md]
+    include: false
+    note: up, doctor, down. No soak or eval internals.
+  /security:
+    sources: [SECURITY.md]
+    include: false
+    note: Private by default. No live vulnerability detail.

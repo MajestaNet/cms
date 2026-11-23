@@ -11,6 +11,6 @@ Pinned when Phases 1–2 were scaffolded. Bump in this file and the lockfile tog
 | TypeScript | `~6.0.3` |
 | Vitest | `^4.1.11` |
 
-Shared library: `@majestanet/cms-core`. First site: `@majestanet/one-docs` (`sites/one`).
+Shared library: `@majestanet/cms-core`. Sites: `@majestanet/one-docs` (`sites/one`), `@majestanet/two-docs` (`sites/two`).
 
 Fonts are downloaded at build through Astro’s Fonts API (Josefin Sans, Inter) and served from this origin — same pattern as `MajestaNet/webpage`. Do not add a Google Fonts `<link>`.

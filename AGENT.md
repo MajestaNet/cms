@@ -24,7 +24,7 @@ The aggregator is a **publisher**. Site agents are the **writers**. CMS CI must 
 4. Fetch the source repo at `sha` (public clone). Review the mapped sources. Update **overlay** so operators see what changed. Do not restyle or “simplify” Starlight chrome (`ClientRouter`, reserved right column, TOC off, view-transition names). Overlay-only jobs that drop those fail `docs-check`.
 5. Open a **draft** PR on this repo labeled `cms-update`. Touch only `sites/<id>/` (and catalog only if the task is registering a site). Do not merge. Do not deploy.
 
-Cursor Automation (dashboard) should launch [`.cursor/agents/cms-router.md`](./.cursor/agents/cms-router.md). A known One-only job may launch [`.cursor/agents/cms-one.md`](./.cursor/agents/cms-one.md) instead. Fallback: paste the prompt at the bottom of this file into a cloud agent.
+Cursor Automation (dashboard) should launch [`.cursor/agents/cms-router.md`](./.cursor/agents/cms-router.md). A known One-only job may launch [`.cursor/agents/cms-one.md`](./.cursor/agents/cms-one.md). A known Two-only job may launch [`.cursor/agents/cms-two.md`](./.cursor/agents/cms-two.md). Fallback: paste the prompt at the bottom of this file into a cloud agent.
 
 ## Loop guards
 

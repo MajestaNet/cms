@@ -121,6 +121,7 @@ export default defineConfig({
         { label: 'Upgrades', slug: 'upgrades' },
         { label: 'Security', slug: 'security' },
         { label: 'Releases', slug: 'releases' },
+        { label: 'Control IDE', slug: 'control-ide' },
       ],
     }),
   ],

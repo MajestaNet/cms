@@ -17,3 +17,11 @@ sites:
     agent: sites/one/AGENT.md
     production_pin: tag-v
     pin_file: sites/one/pin
+  - id: two
+    source_repo: MajestaNet/two
+    directory: sites/two
+    hostname: two.majesta.net
+    netlify_site: majesta-two-docs
+    agent: sites/two/AGENT.md
+    production_pin: main
+    pin_file: sites/two/pin

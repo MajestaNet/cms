@@ -32,6 +32,7 @@ Agents never hold `NETLIFY_*`. Production publish is the Netlify GitHub app afte
 | Directory | Source repo | Hostname | Production pin |
 |---|---|---|---|
 | [`sites/one`](./sites/one/) | [`MajestaNet/one`](https://github.com/MajestaNet/one) | `one.majesta.net` | latest `v*` tag (same string as GHCR) |
+| [`sites/two`](./sites/two/) | [`MajestaNet/two`](https://github.com/MajestaNet/two) | `two.majesta.net` | commit SHA of `main` (pin file must not contain `main`) |
 
 The machine-readable registry is [`sites/catalog.yaml`](./sites/catalog.yaml). Adding a product is a new `sites/<id>/` with its **own** `AGENT.md` — Majesta One (API-first install, public docs) is not Majesta Two (private local inference). Do not reuse One’s playbook.
 
@@ -52,7 +53,7 @@ The machine-readable registry is [`sites/catalog.yaml`](./sites/catalog.yaml). A
 
 ## Status
 
-**Phases 1–2 scaffolded.** `@majestanet/cms-core` validates catalog, notify payloads, pins, and content maps. `sites/one` is Astro Starlight. Pin for One is still `unset` — production publish fails closed (does not fetch `main`). CI and Deploy Previews use `fixtures/one/` and send `noindex`.
+**Phases 1–2 scaffolded.** `@majestanet/cms-core` validates catalog, notify payloads, pins, and content maps. `sites/one` and `sites/two` are Astro Starlight. Both pins are still `unset` — production publish on `one.majesta.net` and `two.majesta.net` fails closed (does not fetch `main`). CI and Deploy Previews use `fixtures/<id>/` and send `noindex`. `make dev` serves One. Two is `npm run dev --workspace=@majestanet/two-docs` (http://127.0.0.1:4323/).
 
 ```bash
 npm ci

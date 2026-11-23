@@ -11,3 +11,5 @@ coverage/
 .cache/
 sites/one/public/favicon.svg
 sites/one/public/apple-touch-icon.png
+sites/two/public/favicon.svg
+sites/two/public/apple-touch-icon.png

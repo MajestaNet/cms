@@ -7,6 +7,10 @@
  */
 const { hasSidebar, entry } = Astro.locals.starlightRoute;
 const reserveAside = hasSidebar && entry.data.template !== 'splash';
+type Figure = { src: string; alt: string; caption: string };
+const figures: Figure[] = Array.isArray(entry.data.cmsFigures)
+	? (entry.data.cmsFigures as Figure[])
+	: [];
 ---
 
 <div class="lg:sl-flex">
@@ -14,6 +18,14 @@ const reserveAside = hasSidebar && entry.data.template !== 'splash';
 		reserveAside && (
 			<aside class="right-sidebar-container print:hidden" aria-label="Page media">
 				<div class="right-sidebar">
+					{
+						figures.map((figure) => (
+							<figure class="cms-figure">
+								<img src={figure.src} alt={figure.alt} />
+								<figcaption>{figure.caption}</figcaption>
+							</figure>
+						))
+					}
 					<slot name="right-sidebar" />
 				</div>
 			</aside>
@@ -54,6 +66,26 @@ const reserveAside = hasSidebar && entry.data.template !== 'splash';
 				height: 100vh;
 				overflow-y: auto;
 				scrollbar-width: none;
+			}
+
+			.cms-figure {
+				margin: 0;
+				padding: 1rem 1rem 0;
+			}
+
+			.cms-figure img {
+				display: block;
+				width: 100%;
+				height: auto;
+				border: 1px solid var(--sl-color-hairline);
+				border-radius: 0;
+			}
+
+			.cms-figure figcaption {
+				margin-top: 0.4rem;
+				font-family: var(--font-display), 'Josefin Sans', sans-serif;
+				font-size: 0.85rem;
+				color: var(--sl-color-gray-3);
 			}
 
 			.main-pane {

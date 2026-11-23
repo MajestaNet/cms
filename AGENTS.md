@@ -21,7 +21,7 @@ A change in a source repo (for example `MajestaNet/one`) is supposed to **run an
 3. Follow **that** site’s `AGENT.md` only. One’s `v*` / MCP / family-HTTP rules are not Two’s.
 4. Draft PR labeled `cms-update`. Do not merge. Do not use `NETLIFY_*`. Do not edit product repositories.
 
-Cursor custom agents: [`.cursor/agents/cms-router.md`](./.cursor/agents/cms-router.md), [`.cursor/agents/cms-one.md`](./.cursor/agents/cms-one.md).
+Cursor custom agents: [`.cursor/agents/cms-router.md`](./.cursor/agents/cms-router.md), [`.cursor/agents/cms-one.md`](./.cursor/agents/cms-one.md), [`.cursor/agents/cms-two.md`](./.cursor/agents/cms-two.md).
 
 ## Branding
 

@@ -1,0 +1,29 @@
+---
+import Search from '@astrojs/starlight/components/Search.astro';
+import SiteTitle from '@astrojs/starlight/components/SiteTitle.astro';
+import SocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
+
+/**
+ * Two header on every page (docs, 404, with or without sidebar).
+ * Starlight’s default grid shifts the lockup against the content column
+ * and leaves a theme-toggle gutter. Brand identity has no theme toggle.
+ * Persist so ClientRouter does not remount search and the lockup on each click.
+ */
+---
+
+<div class="mn-header" transition:persist="mn-header" transition:animate="none">
+	<div class="mn-header-brand">
+		<div class="title-wrapper sl-flex">
+			<SiteTitle />
+		</div>
+		<a href="/" class="mn-product">Two</a>
+	</div>
+	<div class="mn-header-search sl-flex print:hidden">
+		<Search />
+	</div>
+	<div class="mn-header-end sl-hidden md:sl-flex print:hidden">
+		<div class="sl-flex social-icons">
+			<SocialIcons />
+		</div>
+	</div>
+</div>

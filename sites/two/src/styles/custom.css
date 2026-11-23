@@ -1,0 +1,515 @@
+/* Majesta.Net identity — tokens from BRAND.md / QUALITY.md / CHROME.md / webpage global.css.
+   Starlight light-theme trap: --sl-color-white is strongest TEXT, --sl-color-black is page fill.
+   Do not set white to ivory to make the header work. Header ivory/gold is local only. */
+
+:root,
+:root[data-theme='light'],
+:root[data-theme='dark'],
+::backdrop,
+[data-theme='light'] ::backdrop,
+[data-theme='dark'] ::backdrop {
+  --mn-navy: #1b2e46;
+  --mn-gold: #f6cf55;
+  --mn-ivory: #f5f1e8;
+  --mn-slate: #697685;
+  --mn-white: #ffffff;
+  --mn-hairline: color-mix(in srgb, var(--mn-navy) 12%, transparent);
+  --mn-radius: 0;
+
+  --sl-font: var(--font-text), Inter, ui-sans-serif, system-ui, sans-serif;
+  --sl-font-headings: var(--font-display), 'Josefin Sans', ui-sans-serif, sans-serif;
+
+  --sl-color-accent-low: color-mix(in srgb, var(--mn-navy) 10%, var(--mn-ivory));
+  --sl-color-accent: var(--mn-navy);
+  --sl-color-accent-high: var(--mn-navy);
+  --sl-color-white: var(--mn-navy);
+  --sl-color-gray-1: var(--mn-navy);
+  --sl-color-gray-2: var(--mn-navy);
+  --sl-color-gray-3: var(--mn-slate);
+  --sl-color-gray-4: var(--mn-slate);
+  --sl-color-gray-5: color-mix(in srgb, var(--mn-navy) 18%, var(--mn-ivory));
+  --sl-color-gray-6: color-mix(in srgb, var(--mn-navy) 6%, var(--mn-ivory));
+  --sl-color-gray-7: var(--mn-ivory);
+  --sl-color-black: var(--mn-ivory);
+  --sl-color-bg: var(--mn-ivory);
+  --sl-color-bg-nav: var(--mn-navy);
+  --sl-color-bg-sidebar: var(--mn-ivory);
+  --sl-color-bg-inline-code: color-mix(in srgb, var(--mn-navy) 6%, var(--mn-ivory));
+  --sl-color-bg-accent: var(--mn-navy);
+  --sl-color-hairline: var(--mn-hairline);
+  --sl-color-hairline-light: var(--mn-hairline);
+  --sl-color-hairline-shade: var(--mn-hairline);
+  --sl-color-text: var(--mn-navy);
+  --sl-color-text-accent: var(--mn-navy);
+  --sl-color-text-invert: var(--mn-ivory);
+  --sl-shadow-sm: none;
+  --sl-shadow-md: none;
+  --sl-shadow-lg: none;
+}
+
+html {
+  color-scheme: light;
+  background: var(--mn-ivory);
+}
+
+:root {
+  --sl-nav-height: 4.75rem;
+  --sl-mobile-toc-height: 0rem;
+}
+
+/* Starlight 0.41 does not apply --sl-font-headings. Josefin at 400 only. */
+h1,
+h2,
+h3,
+.large,
+.mn-product {
+  font-family: var(--sl-font-headings);
+  font-weight: 400;
+}
+
+/* Beat Starlight scoped font-weight: 600 on PageTitle and sidebar labels. */
+.content-panel h1,
+nav.sidebar .large,
+.hero h1 {
+  font-family: var(--sl-font-headings) !important;
+  font-weight: 400 !important;
+}
+
+/* Inter UI: Regular / Medium only. */
+.sidebar-content a,
+.sidebar-content summary,
+.pagination-links a,
+.pagefind-ui,
+header.header {
+  font-weight: 400;
+}
+
+nav.sidebar a[aria-current='page'],
+#starlight__search .pagefind-ui__result-link,
+#starlight__search mark,
+.starlight-aside__title,
+.card .title {
+  font-weight: 500;
+}
+
+:focus-visible {
+  outline: 2px solid var(--mn-gold);
+  outline-offset: 3px;
+}
+
+/* ---- Header: same chrome on every template ---- */
+
+header.header {
+  background-color: var(--mn-navy) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--mn-gold) 35%, transparent);
+  padding-inline-end: var(--sl-nav-pad-x);
+}
+
+.mn-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.mn-header-brand {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.mn-header-search {
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.mn-header-end {
+  flex: 0 0 auto;
+  align-items: center;
+}
+
+.title-wrapper {
+  min-width: 180px;
+  overflow: visible;
+}
+
+.site-title img,
+.site-title svg {
+  height: 2.55rem;
+  width: auto;
+  min-width: 180px;
+  max-width: none;
+  max-height: 3rem;
+  filter: none !important;
+}
+
+.mn-product {
+  margin-inline-start: 0.85rem;
+  padding-inline-start: 0.85rem;
+  border-inline-start: 1px solid color-mix(in srgb, var(--mn-gold) 45%, transparent);
+  color: var(--mn-gold);
+  font-family: var(--sl-font-headings);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.mn-product:hover {
+  color: var(--mn-ivory);
+}
+
+/* Search: larger ivory control on navy. Gold stays on the lockup, not this brick. */
+header.header site-search button[data-open-modal] {
+  color: color-mix(in srgb, var(--mn-ivory) 78%, transparent);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--mn-radius);
+  box-shadow: none;
+  flex: 0 0 auto;
+  width: auto;
+}
+
+header.header site-search button[data-open-modal] svg {
+  color: inherit;
+  fill: currentColor;
+}
+
+@media (min-width: 50rem) {
+  header.header site-search button[data-open-modal] {
+    background: color-mix(in srgb, var(--mn-ivory) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--mn-ivory) 20%, transparent);
+    color: color-mix(in srgb, var(--mn-ivory) 82%, transparent);
+    width: min(28rem, 100%);
+    max-width: 28rem;
+    min-width: 18rem;
+    height: 2.85rem;
+    padding-inline: 1rem 0.7rem;
+    font-size: 0.95rem;
+    border-radius: var(--mn-radius);
+  }
+
+  header.header site-search button[data-open-modal] svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  header.header site-search button[data-open-modal]:hover {
+    border-color: color-mix(in srgb, var(--mn-ivory) 40%, transparent);
+    color: var(--mn-ivory);
+    background: color-mix(in srgb, var(--mn-ivory) 10%, transparent);
+  }
+}
+
+header.header site-search button[data-open-modal] kbd {
+  background: transparent;
+  color: color-mix(in srgb, var(--mn-ivory) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mn-ivory) 22%, transparent);
+  border-radius: var(--mn-radius);
+  font-size: 0.7rem;
+}
+
+header.header site-search button[data-open-modal]:hover kbd {
+  color: color-mix(in srgb, var(--mn-ivory) 78%, transparent);
+  border-color: color-mix(in srgb, var(--mn-ivory) 36%, transparent);
+}
+
+header.header .social-icons a {
+  color: color-mix(in srgb, var(--mn-ivory) 78%, transparent);
+}
+
+header.header .social-icons a:hover {
+  color: var(--mn-ivory);
+}
+
+header.header .social-icons::after {
+  display: none;
+}
+
+starlight-theme-select {
+  display: none;
+}
+
+/* Square menu: ivory/gold icon on navy, never a 50% circle. */
+starlight-menu-button button {
+  border-radius: var(--mn-radius);
+  background: transparent;
+  color: var(--mn-gold);
+  box-shadow: none;
+  border: 1px solid color-mix(in srgb, var(--mn-gold) 45%, transparent);
+}
+
+starlight-menu-button[aria-expanded='true'] button,
+:root[data-theme='light'] starlight-menu-button button,
+:root[data-theme='light'] starlight-menu-button[aria-expanded='true'] button {
+  background: transparent;
+  color: var(--mn-gold);
+  box-shadow: none;
+}
+
+/* ---- Sidebar: navy on ivory; current page is the only fill ---- */
+
+nav.sidebar .sidebar-pane,
+nav.sidebar .sidebar-content {
+  background: var(--mn-ivory);
+  color: var(--mn-navy);
+}
+
+nav.sidebar a,
+nav.sidebar .large,
+nav.sidebar summary {
+  color: var(--mn-navy);
+  border-radius: var(--mn-radius);
+}
+
+nav.sidebar a:hover,
+nav.sidebar a:focus {
+  color: var(--mn-navy);
+  background: color-mix(in srgb, var(--mn-navy) 8%, var(--mn-ivory));
+}
+
+nav.sidebar a[aria-current='page'],
+nav.sidebar a[aria-current='page']:hover,
+nav.sidebar a[aria-current='page']:focus {
+  color: var(--mn-ivory);
+  background-color: var(--mn-navy);
+  border-radius: var(--mn-radius);
+  font-weight: 500;
+}
+
+nav.sidebar ul ul li {
+  border-inline-start-color: var(--mn-hairline);
+}
+
+nav.sidebar ul ul a {
+  color: var(--mn-navy);
+}
+
+/* ---- Banner: fixture-only, full main-frame width, not a second navy header ---- */
+
+.cms-unpublished {
+  margin: 0;
+  padding: 0.65rem var(--sl-content-pad-x);
+  background: color-mix(in srgb, var(--mn-gold) 18%, var(--mn-ivory));
+  color: var(--mn-navy);
+  font-size: 0.9rem;
+  text-align: center;
+  border: 0;
+  border-bottom: 1px solid var(--mn-hairline);
+  border-radius: var(--mn-radius);
+}
+
+.cms-unpublished code {
+  color: var(--mn-navy);
+  background: transparent;
+  font-weight: 500;
+}
+
+/* ---- Footer / pagination ---- */
+
+.mn-footer {
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--sl-color-hairline);
+}
+
+.mn-footer-source {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--mn-slate);
+}
+
+.mn-footer-source a {
+  color: var(--mn-navy);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.pagination-links a {
+  background: var(--mn-ivory);
+  border-radius: var(--mn-radius);
+  box-shadow: none;
+}
+
+.pagination-links a:hover {
+  border-color: color-mix(in srgb, var(--mn-gold) 70%, var(--mn-navy));
+}
+
+/* ---- Search modal: ivory field, navy type, gold focus, no 15rem void ---- */
+
+site-search dialog {
+  background: var(--mn-ivory);
+  color: var(--mn-navy);
+  border: 1px solid var(--mn-gold);
+  border-radius: var(--mn-radius);
+  box-shadow: none;
+}
+
+@media (min-width: 50rem) {
+  site-search dialog {
+    min-height: 0;
+    height: max-content;
+    border-radius: var(--mn-radius);
+  }
+}
+
+site-search dialog .dialog-frame {
+  min-height: 0;
+}
+
+site-search button[data-close-modal] {
+  color: var(--mn-navy);
+  border-radius: var(--mn-radius);
+}
+
+#starlight__search {
+  --pagefind-ui-primary: var(--mn-navy);
+  --pagefind-ui-text: var(--mn-navy);
+  --pagefind-ui-background: var(--mn-ivory);
+  --pagefind-ui-border: var(--mn-hairline);
+  --pagefind-ui-tag: var(--mn-ivory);
+  --sl-search-corners: 0;
+}
+
+#starlight__search .pagefind-ui__search-input {
+  color: var(--mn-navy);
+  background: var(--mn-ivory);
+  border-radius: var(--mn-radius);
+  font-weight: 400;
+}
+
+#starlight__search .pagefind-ui__search-input::placeholder {
+  color: var(--mn-slate);
+  opacity: 1;
+}
+
+#starlight__search .pagefind-ui__form::before {
+  --pagefind-ui-text: var(--mn-navy);
+  background-color: var(--mn-navy);
+  opacity: 1;
+}
+
+#starlight__search input:focus {
+  --pagefind-ui-border: var(--mn-gold);
+}
+
+#starlight__search .pagefind-ui__search-clear:focus {
+  outline: 2px solid var(--mn-gold);
+  outline-offset: 3px;
+}
+
+#starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)),
+#starlight__search .pagefind-ui__result-nested,
+#starlight__search .pagefind-ui__result-tags {
+  background-color: var(--mn-ivory);
+  border: 1px solid var(--mn-hairline);
+  border-radius: var(--mn-radius);
+}
+
+#starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):hover,
+#starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):focus-within,
+#starlight__search .pagefind-ui__result-nested:hover,
+#starlight__search .pagefind-ui__result-nested:focus-within {
+  outline: 1px solid var(--mn-gold);
+}
+
+#starlight__search .pagefind-ui__result-link {
+  --pagefind-ui-text: var(--mn-navy);
+  color: var(--mn-navy);
+  font-weight: 500;
+}
+
+#starlight__search mark {
+  color: var(--mn-navy);
+  font-weight: 500;
+}
+
+/* ---- Cards, asides, code, mobile TOC: square, webpage hairline ---- */
+
+.card,
+.sl-link-card {
+  border: 1px solid var(--mn-hairline);
+  background: color-mix(in srgb, var(--mn-white) 70%, var(--mn-ivory));
+  box-shadow: none;
+  border-radius: var(--mn-radius);
+}
+
+.card:hover,
+.sl-link-card:hover {
+  border-color: color-mix(in srgb, var(--mn-gold) 70%, var(--mn-navy));
+}
+
+.card .icon {
+  border-radius: var(--mn-radius);
+}
+
+.starlight-aside,
+.sl-markdown-content pre,
+.sl-markdown-content :not(pre) > code,
+.expressive-code,
+.expressive-code pre,
+.expressive-code .frame {
+  border-radius: var(--mn-radius);
+}
+
+/* Right column stays; Starlight TOC does not. */
+starlight-toc,
+mobile-starlight-toc {
+  display: none;
+}
+
+/* Chrome stays put. ClientRouter swaps the article; do not MPA-morph the shell.
+   Cross-document view transitions plus a root crossfade look like a full reload
+   once included-source pages get large. */
+@view-transition {
+  navigation: none;
+}
+
+header.header {
+  view-transition-name: mn-header;
+}
+
+.sidebar-pane {
+  view-transition-name: mn-sidebar;
+}
+
+.right-sidebar-container {
+  view-transition-name: mn-aside;
+}
+
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-old(mn-header),
+::view-transition-new(mn-header),
+::view-transition-old(mn-sidebar),
+::view-transition-new(mn-sidebar),
+::view-transition-old(mn-aside),
+::view-transition-new(mn-aside) {
+  animation: none;
+  mix-blend-mode: normal;
+  height: 100%;
+}
+
+@media (max-width: 49.99rem) {
+  :root[data-has-sidebar] header.header {
+    padding-inline-end: calc(var(--sl-nav-gap) + var(--sl-nav-pad-x) + var(--sl-menu-button-size));
+  }
+
+  .mn-product {
+    /* Keep the lockup; do not clip “ONE” to a single letter next to the menu. */
+    display: none;
+  }
+
+  .site-title img,
+  .site-title svg {
+    min-width: 0;
+    width: min(180px, 42vw);
+  }
+}

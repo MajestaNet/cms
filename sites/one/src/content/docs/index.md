@@ -15,6 +15,7 @@ Lead with **MCP + `one` + family HTTP**. Pin `One-API-Revision` for the image yo
 | [API families](/api/families) | Client, Metadata, Deploy, Ops, Auth |
 | [Objects](/objects) | Managed object catalog — not `GET /describe` |
 | [Customization](/customization) | Custom vs managed — do not fork the product |
+| [Control IDE](/control-ide) | Optional desktop JWT client — not the product shell |
 
 This site tracks a product `v*` tag (the same version string as GHCR). It does not publish from `MajestaNet/one` `main`.
 

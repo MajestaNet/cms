@@ -1,0 +1,4 @@
+# Production pin for two.majesta.net.
+# A commit SHA of MajestaNet/two (the published revision of main).
+# The word main is rejected. Unset means not published yet.
+unset

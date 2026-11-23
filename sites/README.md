@@ -5,6 +5,7 @@ One directory per **Netlify site** / public hostname, registered in [catalog.yam
 | Directory | Hostname | Source repo | Production pin | Site agent |
 |---|---|---|---|---|
 | [one/](./one/) | `one.majesta.net` | `MajestaNet/one` | `v*` (GHCR) | [one/AGENT.md](./one/AGENT.md) |
+| [two/](./two/) | `two.majesta.net` | `MajestaNet/two` | commit SHA of `main` (file must not say `main`) | [two/AGENT.md](./two/AGENT.md) |
 
 ## Required files (every site)
 
@@ -16,7 +17,7 @@ One directory per **Netlify site** / public hostname, registered in [catalog.yam
 | `pin` | Production source revision (`unset` until first publish) |
 | `netlify.toml` | Per-site build, publish dir, and `ignore` (after Starlight exists) |
 
-Phase 2 (One): Starlight app files and `netlify.toml` live in `sites/one/`. Overlay pages are `src/content/docs/`. Mapped source markdown is included at build time from the pin (or `fixtures/<id>/` while unset). Do not commit a second wiki.
+Phase 2: Starlight app files and `netlify.toml` live in `sites/one/` and `sites/two/`. Overlay pages are `src/content/docs/`. Mapped source markdown is included at build time from the pin (or `fixtures/<id>/` while unset). Do not commit a second wiki.
 
 ## Adding a product
 

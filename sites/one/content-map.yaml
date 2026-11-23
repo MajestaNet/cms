@@ -55,3 +55,7 @@ pages:
   /releases:
     sources: [docs/release-cicd.md]
     note: Customer cut — tag, digest pin, no channel-roll internals.
+  /control-ide:
+    sources: [docs/customer-ide-ux.md]
+    include: false
+    note: Optional JWT client. Do not paste the UX spec or agent playbook.

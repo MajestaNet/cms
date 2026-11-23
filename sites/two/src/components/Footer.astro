@@ -1,0 +1,18 @@
+---
+import Pagination from '@astrojs/starlight/components/Pagination.astro';
+
+/**
+ * Customer footer. “Edit this page” would point at overlay files in this
+ * aggregator — operators want the product source instead.
+ */
+---
+
+<footer class="mn-footer sl-flex">
+	<p class="mn-footer-source">
+		<a href="https://github.com/MajestaNet/two">Source & contributing</a> on GitHub.
+		The iPhone and Apple Watch apps are
+		<a href="https://github.com/MajestaNet/two-mobile">two-mobile</a>.
+		Agent playbooks and the backlog stay on GitHub — they are not part of this host.
+	</p>
+	<Pagination />
+</footer>

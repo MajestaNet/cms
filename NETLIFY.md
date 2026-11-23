@@ -33,7 +33,7 @@ Later products repeat the **right-hand side** only: new `sites/<id>/`, new catal
 | Netlify site name | Package directory | Production hostname | Source repo | Pin |
 |---|---|---|---|---|
 | `majesta-one-docs` | `sites/one` | `one.majesta.net` | `MajestaNet/one` | `v*` (file `sites/one/pin`) |
-| (later) `majesta-two-docs` | `sites/two` | `two.majesta.net` | that product’s repo | that site’s rule |
+| `majesta-two-docs` | `sites/two` | `two.majesta.net` | `MajestaNet/two` | commit SHA (file `sites/two/pin`, never the word `main`) |
 
 `netlify_site` in [`sites/catalog.yaml`](./sites/catalog.yaml) is the **Netlify UI site name**. Keep it unique. `sites/_template` is not a site.
 

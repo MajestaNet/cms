@@ -25,13 +25,14 @@ If you are publishing another product, stop and open that product’s `AGENT.md`
 
 - Audience: operators, builders, ISVs — not coding agents.
 - Lead with **MCP + `one` + family HTTP**.
-- Mention Control IDE as an **optional JWT client**, not the product shell.
+- Mention Control IDE as an **optional JWT client**, not the product shell. The public page is `/control-ide`. Do not lead the overview with it. Screenshots on that page are the window itself (sign-in and the four mode tiles), stored as `cmsFigures`, not a mock.
 - Customer wording: path, method, scope, what it does / does not.
 - Footer may link “Source & contributing” to `https://github.com/MajestaNet/one`. Do not nav to playbooks, BPs, or Control IDE internals.
 
 ## Never publish
 
 - `docs/architecture/*-playbook*`, `*-build-plan.md`, `backlog/`, `.cursor/`, `AGENTS.md`
+- `docs/architecture/agent-control-ide.md`, `docs/control-ide-build.md`, `docs/control-ide-design.md` (contributor). The customer page is `/control-ide`.
 - `docs/data-model.md` (contributor storage; public catalog is `docs/objects.md`)
 - `GET /client/v1/describe` as a public catalog (authenticated runtime schema)
 - Live vulnerability detail

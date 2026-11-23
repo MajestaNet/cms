@@ -28,10 +28,9 @@ describe('repo content maps', () => {
 
   it('checks One against fixtures while pin is unset', async () => {
     const results = await checkAllSites(repoRoot);
-    expect(results).toHaveLength(1);
-    expect(results[0].id).toBe('one');
-    expect(results[0].mode).toBe('fixture');
-    expect(results[0].pin).toBe('unset');
+    expect(results).toHaveLength(2);
+    expect(results.map((r) => r.id)).toEqual(['one', 'two']);
+    expect(results.every((r) => r.mode === 'fixture' && r.pin === 'unset')).toBe(true);
     expect(results[0].pages['/install']).toEqual(['docs/self-host.md']);
     expect(results[0].pages['/modules']).toEqual(['docs/modules/README.md', 'docs/modules/core.md']);
   });
