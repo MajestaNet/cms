@@ -53,7 +53,7 @@ The machine-readable registry is [`sites/catalog.yaml`](./sites/catalog.yaml). A
 
 ## Status
 
-**Phases 1–2 scaffolded.** `@majestanet/cms-core` validates catalog, notify payloads, pins, and content maps. `sites/one` and `sites/two` are Astro Starlight. One is pinned to commit `c85b998` (version constant `0.1.0`; no `v*` tag yet). Two is pinned to commit `1acb47c` (package `0.1.0`). `make dev` serves One. Two is `npm run dev --workspace=@majestanet/two-docs` (http://127.0.0.1:4323/).
+**Phases 1–2 scaffolded.** `@majestanet/cms-core` validates catalog, notify payloads, pins, and content maps. `sites/one` and `sites/two` are Astro Starlight. One is pinned to commit `85281d5` (version constant `0.1.0`; no `v*` tag yet). Two is pinned to commit `1acb47c` (package `0.1.0`). `make dev` serves One. Two is `npm run dev --workspace=@majestanet/two-docs` (http://127.0.0.1:4323/).
 
 ```bash
 npm ci

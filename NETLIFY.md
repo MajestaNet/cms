@@ -105,7 +105,7 @@ On a CMS PR that touches One’s inputs, Netlify should run a **Deploy Preview**
 
 ### 1.5 Production while `pin` is `unset`
 
-`sites/one/pin` is commit `c85b998cfe11051ef6ac52d7d438d2f3bed7eed6` (version constant `0.1.0`). There is still no `v*` tag. Do not replace that SHA with the word `main`. `sites/two/pin` is commit `1acb47c3d4492a4f144bdd21cfc485a2d3c4e358` (package `0.1.0`).
+`sites/one/pin` is commit `85281d523665a9d894df6ec4662944fd0a3d644b` (version constant `0.1.0`). There is still no `v*` tag. Do not replace that SHA with the word `main`. `sites/two/pin` is commit `1acb47c3d4492a4f144bdd21cfc485a2d3c4e358` (package `0.1.0`).
 
 Netlify’s **first deploy after you connect the repo is production context** (`CONTEXT=production`), even though it only lives at `*.netlify.app` until you attach a custom domain. People often call that a “preview.” It is not a Deploy Preview.
 

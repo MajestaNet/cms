@@ -32,7 +32,7 @@ describe('repo content maps', () => {
     expect(results.map((r) => r.id)).toEqual(['one', 'two']);
     expect(results.map((r) => r.mode)).toEqual(['pin', 'pin']);
     expect(results.map((r) => r.pin)).toEqual([
-      'c85b998cfe11051ef6ac52d7d438d2f3bed7eed6',
+      '85281d523665a9d894df6ec4662944fd0a3d644b',
       '1acb47c3d4492a4f144bdd21cfc485a2d3c4e358',
     ]);
     expect(results[0].pages['/install']).toEqual(['docs/self-host.md']);
@@ -46,13 +46,13 @@ describe('repo content maps', () => {
     process.env.URL = 'https://majesta-one-docs.netlify.app';
     const results = await checkAllSites(repoRoot);
     expect(results[0].mode).toBe('pin');
-    expect(results[0].pin).toBe('c85b998cfe11051ef6ac52d7d438d2f3bed7eed6');
+    expect(results[0].pin).toBe('85281d523665a9d894df6ec4662944fd0a3d644b');
   });
 
   it('resolves One for a production publish at the pinned commit', async () => {
     process.env.CMS_PRODUCTION = '1';
     const source = await resolveSource({ repoRoot, siteId: 'one' });
     expect(source.mode).toBe('pin');
-    expect(source.blobRef).toBe('c85b998cfe11051ef6ac52d7d438d2f3bed7eed6');
+    expect(source.blobRef).toBe('85281d523665a9d894df6ec4662944fd0a3d644b');
   });
 });

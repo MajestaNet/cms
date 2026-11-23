@@ -10,6 +10,10 @@ pages:
     note: Short rewrite of product nouns. Do not dump the full README.
   /install:
     sources: [docs/self-host.md]
+  /setup:
+    sources: [docs/setup.md]
+    include: false
+    note: Customer cut of the App Platform plus Control IDE walkthrough. Screenshots are copied to public/setup so the page does not hotlink GitHub.
   /connect:
     sources: [docs/builder-connect.md, docs/customer-connect.md]
   /cli:

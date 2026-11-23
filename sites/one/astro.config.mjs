@@ -100,6 +100,7 @@ export default defineConfig({
         : [],
       sidebar: [
         { label: 'Overview', link: '/' },
+        { label: 'Set up', slug: 'setup' },
         { label: 'Install', slug: 'install' },
         { label: 'Connect', slug: 'connect' },
         { label: 'CLI', slug: 'cli' },

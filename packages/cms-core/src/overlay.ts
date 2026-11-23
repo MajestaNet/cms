@@ -9,6 +9,7 @@ import { asPublicPage, normalizePublicPath, publicPagesFromRoutes } from './link
 
 const PLACEHOLDER = /\b(TODO|FIXME)\b/;
 const STATIC_ASSETS = new Set(['/favicon.svg', '/apple-touch-icon.png']);
+const PUBLIC_FILE = /^\/(?:[A-Za-z0-9._-]+\/)*[A-Za-z0-9._-]+\.(?:png|jpe?g|gif|webp|svg)$/;
 
 export function overlayRelPath(page: string): string {
   const route = normalizePublicPath(page);
@@ -48,6 +49,11 @@ export interface OverlayCheckIssue {
   message: string;
 }
 
+function isPublishedFile(siteDir: string | undefined, path: string): boolean {
+  if (!siteDir || !PUBLIC_FILE.test(path)) return false;
+  return existsSync(join(siteDir, 'public', path.slice(1)));
+}
+
 function isExternalOrHash(href: string): boolean {
   const [path] = href.split('#');
   if (!path || path.startsWith('#')) return true;
@@ -58,6 +64,7 @@ export function checkOverlayBody(
   body: string,
   publicPages: Set<string>,
   file: string,
+  siteDir?: string,
 ): OverlayCheckIssue[] {
   const issues: OverlayCheckIssue[] = [];
   if (PLACEHOLDER.test(body)) {
@@ -70,7 +77,7 @@ export function checkOverlayBody(
   for (const href of overlayInternalHrefs(body)) {
     if (isExternalOrHash(href)) continue;
     const [path] = href.split('#');
-    if (STATIC_ASSETS.has(path)) continue;
+    if (STATIC_ASSETS.has(path) || isPublishedFile(siteDir, path)) continue;
     if (path.startsWith('/') && !path.startsWith('//')) {
       const page = asPublicPage(path, publicPages);
       if (page) continue;
@@ -135,7 +142,7 @@ export async function checkOverlayPages(
         message: `cmsPage must be ${page} (got ${JSON.stringify(fm.cmsPage)})`,
       });
     }
-    issues.push(...checkOverlayBody(body, publicPages, rel));
+    issues.push(...checkOverlayBody(body, publicPages, rel, siteDir));
   }
 
   if (existsSync(docsRoot)) {

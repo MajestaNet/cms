@@ -2,7 +2,7 @@
 
 Customer-facing docs for the Majesta One install (API-first, no embedded UI). Source markdown lives in the public [`MajestaNet/one`](https://github.com/MajestaNet/one) repo. This directory is overlay + pin + Starlight (`@majestanet/one-docs`). Netlify: [netlify.toml](./netlify.toml). Overlay pages: `src/content/docs/`. Mapped source markdown is included at **build time** from the pin (or `fixtures/one/` while pin is unset).
 
-**Pin rule:** production follows the latest **`v*` tag**, same version string as `ghcr.io/majestanet/one-api`. Until that tag exists, `pin` is commit `c85b998cfe11051ef6ac52d7d438d2f3bed7eed6` (version constant `0.1.0`). A notify on `MajestaNet/one` `main` updates overlay in a draft PR only and does not move `pin`.
+**Pin rule:** production follows the latest **`v*` tag**, same version string as `ghcr.io/majestanet/one-api`. Until that tag exists, `pin` is commit `85281d523665a9d894df6ec4662944fd0a3d644b` (version constant `0.1.0`). A notify on `MajestaNet/one` `main` updates overlay in a draft PR only and does not move `pin`.
 
 **Writer:** [AGENT.md](./AGENT.md) — do not use this playbook for Two or any other site.
 
@@ -13,7 +13,8 @@ Customer-facing docs for the Majesta One install (API-first, no embedded UI). So
 ```text
 one.majesta.net
 ├── /                      Overview (short rewrite of README + glossary nouns)
-├── /install               Path A App Platform + Path B Compose/Helm
+├── /setup                 DigitalOcean App Platform, then Control IDE
+├── /install               Path A reference + Path B Compose/Helm
 ├── /connect               MCP + JWT + CLI
 ├── /cli                   one project / org validate|deploy
 ├── /api
@@ -62,7 +63,8 @@ First matching prefix wins; a file may map to more than one page (unique `path` 
 | `internal/httpapi/mcp_routes.go`, `internal/mcp/**`, `tools/one-mcp/**` | `/connect` |
 | `internal/httpapi/revision.go`, `internal/compat/**` | `/api/revision` |
 | `cmd/one/**` | `/cli` |
-| `docs/self-host.md`, `deploy/docker-compose.yml`, `deploy/helm/**`, `deploy/digitalocean/**` | `/install` |
+| `docs/self-host.md`, `deploy/docker-compose.yml`, `deploy/helm/**`, `deploy/digitalocean/**` | `/install`, `/setup` |
+| `docs/setup.md`, `docs/images/setup/**` | `/setup` |
 | `docs/builder-connect.md`, `docs/customer-connect.md` | `/connect` |
 | `docs/customer-repo.md`, `docs/customer-developer-workflow.md` | `/cli` |
 | `docs/api-families.md` | `/api/families` only (overview) |

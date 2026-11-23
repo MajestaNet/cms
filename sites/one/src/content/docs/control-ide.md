@@ -3,12 +3,18 @@ title: Control IDE
 description: Optional desktop client for a Majesta One install. The API, MCP, and the one CLI remain the product.
 cmsPage: /control-ide
 cmsFigures:
-  - src: /control-ide/sign-in.png
-    alt: Control IDE sign-in window, not connected, with install URL, browser sign-in, and client credentials.
-    caption: Sign-in. The four mode tiles appear after a JWT is stored.
+  - src: /setup/sign-in.png
+    alt: Control IDE sign-in, with the install URL and the claim card.
+    caption: Sign in. On App Platform the URL is your HTTPS origin.
+  - src: /setup/launcher.png
+    alt: Control IDE mode launcher with Operate, Build, Govern, and Settings.
+    caption: Launcher after the install is claimed.
+  - src: /setup/environments.png
+    alt: Control IDE Settings, Environments, with the install connected.
+    caption: Environments shows the connected install.
 ---
 
-Control IDE is an optional desktop client for a Majesta One install. It signs in with a Majesta One JWT and calls the same family HTTP the API already exposes. It is not the installer, not the product shell, and not a hosted app. Install and connect with [Install](/install), [Connect](/connect), and the [`one` CLI](/cli). Use this client when you want those calls in a window.
+Control IDE is an optional desktop client for a Majesta One install. It signs in with a Majesta One JWT and calls the same family HTTP the API already exposes. It is not the installer, not the product shell, and not a hosted app. The DigitalOcean walkthrough, with these screenshots, is [Set up](/setup). Builders can also use [Connect](/connect) and the [`one` CLI](/cli).
 
 The window is Electron. Customer distribution is a desktop installer. A browser session is not a supported install.
 

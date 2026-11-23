@@ -1,4 +1,4 @@
 # Production pin for one.majesta.net.
 # No v* tag or GitHub Release exists yet. This commit is internal/version
 # Version = 0.1.0. The next v* tag replaces this SHA. Never write main.
-c85b998cfe11051ef6ac52d7d438d2f3bed7eed6
+85281d523665a9d894df6ec4662944fd0a3d644b

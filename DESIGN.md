@@ -71,7 +71,7 @@ Off-allowlist links in included markdown are **rewritten to GitHub** at the pin 
 
 `/v/X.Y/` snapshots for One stay **in that site’s build output** (last N minors; pick N at Phase 4, default 2), not as Netlify deploy permalinks. Older than N stays on GitHub at the product tag.
 
-One has **no `v*` tags yet**. `sites/one/pin` is commit `c85b998cfe11051ef6ac52d7d438d2f3bed7eed6` (version constant `0.1.0`). The next `v*` tag replaces that SHA. Do not substitute the word `main`. `sites/two/pin` is commit `1acb47c3d4492a4f144bdd21cfc485a2d3c4e358` (package `0.1.0`).
+One has **no `v*` tags yet**. `sites/one/pin` is commit `85281d523665a9d894df6ec4662944fd0a3d644b` (version constant `0.1.0`). The next `v*` tag replaces that SHA. Do not substitute the word `main`. `sites/two/pin` is commit `1acb47c3d4492a4f144bdd21cfc485a2d3c4e358` (package `0.1.0`).
 
 ## Per-site agents
 
